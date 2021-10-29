@@ -31,13 +31,13 @@ while [ "$CHOICE -ne 4" ]; do
     clear
     case $CHOICE in
         1)  echo "Enabling RPM Fusion"
-            sudo dnf install https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
+            sudo dnf install -y https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
             notify-send "RPM Fusion Enabled" --expire-time=10
            ;;
         2)  echo "Enabling Better Fonts by Dawid"
-            sudo -s dnf copr enable dawid/better_fonts
-            sudo -s dnf install fontconfig-font-replacements
-            sudo -s dnf install fontconfig-enhanced-defaults
+            sudo -s dnf -y copr enable dawid/better_fonts
+            sudo -s dnf install -y fontconfig-font-replacements
+            sudo -s dnf install -y fontconfig-enhanced-defaults
             notify-send "Fonts prettified - enjoy!" --expire-time=10
            ;;
         3)  echo "Speeding Up DNF"
