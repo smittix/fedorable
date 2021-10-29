@@ -8,9 +8,9 @@ TITLE="Make a selection"
 MENU="Please Choose one of the following options:"
 
 #Check to see if Dialog is installed, if not install it
-if [ $(dpkg-query -W -f='${Status}' nano 2>/dev/null | grep -c "ok installed") -eq 0 ];
+if [ $(dpkg-query -W -f='${Status}' dialog 2>/dev/null | grep -c "ok installed") -eq 0 ];
 then
-  apt-get install nano;
+  sudo dnf install -y dialog;
 fi
 
 
