@@ -52,7 +52,7 @@ while [ "$CHOICE -ne 4" ]; do
             notify-send "Flatpak has now been enabled" --expire-time=10
            ;;
         5)  echo "Installing Software"
-            sudo dnf install -y gnome-extensions-app gnome-tweaks gnome-shell-extension-appindicator gstreamer1-plugins-{bad-\*,good-\*,base} gstreamer1-plugin-openh264 gstreamer1-libav --exclude=gstreamer1-plugins-bad-free-devel install lame\* --exclude=lame-devel elementary-icon-theme deepin-icon-theme yaru-theme numix-gtk-theme moka-icon-theme greybird-dark-theme arc-theme tlp tlp-rdw vlc dropbox nautilus-dropbox dnfdragora paper-icon-theme flat-remix-icon-theme flat-remix-theme
+            sudo dnf install -y gnome-extensions-app gnome-tweaks gnome-shell-extension-appindicator gstreamer1-plugins-{bad-\*,good-\*,base} gstreamer1-plugin-openh264 gstreamer1-libav --exclude=gstreamer1-plugins-bad-free-devel lame\* --exclude=lame-devel elementary-icon-theme deepin-icon-theme yaru-theme numix-gtk-theme moka-icon-theme greybird-dark-theme arc-theme tlp tlp-rdw vlc dropbox nautilus-dropbox dnfdragora paper-icon-theme flat-remix-icon-theme flat-remix-theme
             notify-send "Software has been installed" --expire-time=10
            ;;
         6)  echo "Enabling Flat GTK and Icon Theme"
