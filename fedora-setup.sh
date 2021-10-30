@@ -18,10 +18,13 @@ fi
 OPTIONS=(1 "Enable RPM Fusion - Enables the RPM Fusion Repos"
          2 "Enable Better Fonts - Better font rendering by Dawid"
          3 "Speed up DNF - This enables fastestmirror, max downloads and deltarpms"
-         4 "Enable Flatpak - Flatpak is installed by default but not enabled"
-         5 "Install Software - Installs a bunch of my most used software"
-         6 "Setup Flat Look - Installs and Enables the Flat GTK and Icon themes"
-         7 "Quit")
+         4 "Enable Flatpak - Enables the Flatpak repository
+         5 "Install Common Software - Installs a bunch of my most used software"
+         6 "Enable Flat Theme - Installs and Enables the Flat GTK and Icon themes"
+         7 "Install Oh-My-ZSH"
+         8 "Enable Tweaks, Extensions & Plugins"
+         9 "Install Microsoft Edge"
+         10 "Quit")
 
 while [ "$CHOICE -ne 4" ]; do
     CHOICE=$(dialog --clear \
@@ -57,11 +60,11 @@ while [ "$CHOICE -ne 4" ]; do
             notify-send "Flatpak has now been enabled" --expire-time=10
            ;;
         5)  echo "Installing Software"
-            sudo dnf install -y gnome-extensions-app gnome-tweaks gnome-shell-extension-appindicator gstreamer1-plugins-{bad-\*,good-\*,base} gstreamer1-plugin-openh264 gstreamer1-libav --exclude=gstreamer1-plugins-bad-free-devel lame\* --exclude=lame-devel elementary-icon-theme deepin-icon-theme yaru-theme numix-gtk-theme moka-icon-theme greybird-dark-theme arc-theme tlp tlp-rdw vlc dropbox nautilus-dropbox dnfdragora paper-icon-theme flat-remix-icon-theme flat-remix-theme
+            sudo dnf install -y gnome-extensions-app gnome-tweaks gnome-shell-extension-appindicator vlc dropbox nautilus-dropbox dnfdragora audacious mscore-fonts-all neofetch cmatrix p7zip unzip gparted
             notify-send "Software has been installed" --expire-time=10
            ;;
         6)  echo "Enabling Flat GTK and Icon Theme"
-            sudo dnf install -y gnome-shell-extensions-user-theme
+            sudo dnf install -y gnome-shell-extensions-user-theme paper-icon-theme flat-remix-icon-theme flat-remix-theme
             gnome-extensions install user-theme@gnome-shell-extensions.gcampax.github.com
             gnome-extensions enable user-theme@gnome-shell-extensions.gcampax.github.com
             gsettings set org.gnome.desktop.interface gtk-theme "Flat-Remix-GTK-Blue"
@@ -69,7 +72,26 @@ while [ "$CHOICE -ne 4" ]; do
             gsettings set org.gnome.desktop.interface icon-theme 'Flat-Remix-Blue'
             notify-send "There you go, that's better" --expire-time=10
            ;;
-        7)
+        7)  echo "Installing Oh-My-Zsh"
+            sudo dnf install -y curl zsh
+            sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+            notify-send "Oh-My-Zsh is ready to rock n roll" --expire-time=10
+           ;;
+        8)  echo "Installing Tweaks, extensions & plugins"
+            sudo dnf groupupdate -y sound-and-video
+            sudo dnf install -y libdvdcss
+            sudo dnf install -y gstreamer1-plugins-{bad-\*,good-\*,ugly-\*,base} gstreamer1-libav --exclude=gstreamer1-plugins-bad-free-devel ffmpeg gstreamer-ffmpeg
+            sudo dnf install -y lame\* --exclude=lame-devel
+            sudo dnf group upgrade -y --with-optional Multimedia
+            notify-send "All done" --expire-time=10
+           ;;            
+        9)  echo "Installing Microsoft Edge"
+            sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc
+            sudo dnf config-manager --add-repo https://packages.microsoft.com/yumrepos/edge
+            sudo mv /etc/yum.repos.d/packages.microsoft.com_yumrepos_edge.repo /etc/yum.repos.d/microsoft-edge-beta.repo
+            sudo dnf install -y microsoft-edge-beta
+           ;;
+        10)
           exit 0
           ;;
     esac
