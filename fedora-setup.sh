@@ -75,6 +75,7 @@ while [ "$CHOICE -ne 4" ]; do
         7)  echo "Installing Oh-My-Zsh"
             sudo dnf install -y curl zsh
             sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+            exit
             notify-send "Oh-My-Zsh is ready to rock n roll" --expire-time=10
            ;;
         8)  echo "Installing Tweaks, extensions & plugins"
