@@ -18,7 +18,7 @@ fi
 OPTIONS=(1 "Enable RPM Fusion - Enables the RPM Fusion Repos"
          2 "Enable Better Fonts - Better font rendering by Dawid"
          3 "Speed up DNF - This enables fastestmirror, max downloads and deltarpms"
-         4 "Enable Flatpak - Enables the Flatpak repository
+         4 "Enable Flatpak - Enables the Flatpak repository"
          5 "Install Common Software - Installs a bunch of my most used software"
          6 "Enable Flat Theme - Installs and Enables the Flat GTK and Icon themes"
          7 "Install Oh-My-ZSH"
