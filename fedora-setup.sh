@@ -26,8 +26,7 @@ OPTIONS=(1 "Enable RPM Fusion - Enables the RPM Fusion Repos"
          6 "Enable Flat Theme - Installs and Enables the Flat GTK and Icon themes"
          7 "Install Oh-My-ZSH"
          8 "Enable Tweaks, Extensions & Plugins"
-         9 "Install Microsoft Edge"
-         10 "Quit")
+         9 "Quit")
 
 while [ "$CHOICE -ne 4" ]; do
     CHOICE=$(dialog --clear \
@@ -77,7 +76,7 @@ while [ "$CHOICE -ne 4" ]; do
            ;;
         7)  echo "Installing Oh-My-Zsh"
             sudo dnf -y install zsh util-linux-user
-            sh -c "$(curl -fsSL $OH_MY_ZSH_URL --unattended)"
+            sh -c "$(curl -fsSL $OH_MY_ZSH_URL)"
             echo "Installing zsh_autosuggestions"
             git clone https://github.com/zsh-users/zsh-autosuggestions "${ZSH_CUSTOM:-~/.oh-my-zsh/custom}"/plugins/zsh-autosuggestions
             echo "change shell to ZSH"
@@ -91,14 +90,8 @@ while [ "$CHOICE -ne 4" ]; do
             sudo dnf install -y lame\* --exclude=lame-devel
             sudo dnf group upgrade -y --with-optional Multimedia
             notify-send "All done" --expire-time=10
-           ;;            
-        9)  echo "Installing Microsoft Edge"
-            sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc
-            sudo dnf config-manager --add-repo https://packages.microsoft.com/yumrepos/edge
-            sudo mv /etc/yum.repos.d/packages.microsoft.com_yumrepos_edge.repo /etc/yum.repos.d/microsoft-edge-beta.repo
-            sudo dnf install -y microsoft-edge-beta
            ;;
-        10)
+        9)
           exit 0
           ;;
     esac
