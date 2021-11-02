@@ -26,7 +26,8 @@ OPTIONS=(1 "Enable RPM Fusion - Enables the RPM Fusion Repos"
          6 "Enable Flat Theme - Installs and Enables the Flat GTK and Icon themes"
          7 "Install Oh-My-ZSH"
          8 "Enable Tweaks, Extensions & Plugins"
-         9 "Quit")
+	 9 "Install Microsoft Edge"
+         10 "Quit")
 
 while [ "$CHOICE -ne 4" ]; do
     CHOICE=$(dialog --clear \
@@ -42,6 +43,10 @@ while [ "$CHOICE -ne 4" ]; do
     case $CHOICE in
         1)  echo "Enabling RPM Fusion"
             sudo dnf install -y https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
+	    sudo dnf upgrade --refresh
+            sudo dnf groupupdate -y core
+            sudo dnf install -y rpmfusion-free-release-tainted
+            sudo dnf install -y dnf-plugins-core
             notify-send "RPM Fusion Enabled" --expire-time=10
            ;;
         2)  echo "Enabling Better Fonts by Dawid"
@@ -89,7 +94,13 @@ while [ "$CHOICE -ne 4" ]; do
             sudo dnf group upgrade -y --with-optional Multimedia
             notify-send "All done" --expire-time=10
            ;;
-        9)
+	 9) echo "Installing microsoft edge"
+            sudo rpm -v --import https://packages.microsoft.com/keys/microsoft.asc
+            sudo dnf config-manager --add-repo https://packages.microsoft.com/yumrepos/edge
+            sudo mv /etc/yum.repos.d/packages.microsoft.com_yumrepos_edge.repo /etc/yum.repos.d/microsoft-edge.repo
+            sudo dnf install -y microsoft-edge-stable
+	   ;;
+        10)
           exit 0
           ;;
     esac
