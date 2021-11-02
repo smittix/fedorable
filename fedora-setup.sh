@@ -64,7 +64,7 @@ while [ "$CHOICE -ne 4" ]; do
             notify-send "Software has been installed" --expire-time=10
            ;;
         6)  echo "Enabling Flat GTK and Icon Theme"
-            sudo dnf install -y gnome-shell-extensions-user-theme paper-icon-theme flat-remix-icon-theme flat-remix-theme
+            sudo dnf install -y paper-icon-theme flat-remix-icon-theme flat-remix-theme
             gnome-extensions install user-theme@gnome-shell-extensions.gcampax.github.com
             gnome-extensions enable user-theme@gnome-shell-extensions.gcampax.github.com
             gsettings set org.gnome.desktop.interface gtk-theme "Flat-Remix-GTK-Blue"
