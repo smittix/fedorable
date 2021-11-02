@@ -7,6 +7,9 @@ BACKTITLE="Fedora Setup Util - By Osiris - https://stealingthe.network"
 TITLE="Make a selection"
 MENU="Please Choose one of the following options:"
 
+#Other variables
+OH_MY_ZSH_URL="https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh"
+
 #Check to see if Dialog is installed, if not install it
 if [ $(dpkg-query -W -f='${Status}' dialog 2>/dev/null | grep -c "ok installed") -eq 0 ];
 then
@@ -73,9 +76,12 @@ while [ "$CHOICE -ne 4" ]; do
             notify-send "There you go, that's better" --expire-time=10
            ;;
         7)  echo "Installing Oh-My-Zsh"
-            sudo dnf install -y curl zsh
-            sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-            exit
+            sudo dnf -y install zsh util-linux-user
+            sh -c "$(curl -fsSL $OH_MY_ZSH_URL --unattended)"
+            echo "Installing zsh_autosuggestions"
+            git clone https://github.com/zsh-users/zsh-autosuggestions "${ZSH_CUSTOM:-~/.oh-my-zsh/custom}"/plugins/zsh-autosuggestions
+            echo "change shell to ZSH"
+            chsh -s "$(which zsh)"
             notify-send "Oh-My-Zsh is ready to rock n roll" --expire-time=10
            ;;
         8)  echo "Installing Tweaks, extensions & plugins"
