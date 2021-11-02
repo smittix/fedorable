@@ -1,6 +1,6 @@
 #!/bin/bash
 PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin
-HEIGHT=15
+HEIGHT=20
 WIDTH=90
 CHOICE_HEIGHT=4
 BACKTITLE="Fedora Setup Util - By Osiris - https://stealingthe.network"
@@ -65,7 +65,7 @@ while [ "$CHOICE -ne 4" ]; do
             sudo dnf install -y gnome-extensions-app gnome-tweaks gnome-shell-extension-appindicator vlc dropbox nautilus-dropbox dnfdragora audacious mscore-fonts-all neofetch cmatrix p7zip unzip gparted
             notify-send "Software has been installed" --expire-time=10
            ;;
-        6)  echo "Enabling Flat GTK and Icon Theme"
+        6)  echo "Installing Appearance Tweaks - Flat GTK and Icon Theme"
             sudo dnf install -y gnome-shell-extension-user-theme paper-icon-theme flat-remix-icon-theme flat-remix-theme
             gnome-extensions install user-theme@gnome-shell-extensions.gcampax.github.com
             gnome-extensions enable user-theme@gnome-shell-extensions.gcampax.github.com
