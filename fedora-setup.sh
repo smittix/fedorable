@@ -77,8 +77,6 @@ while [ "$CHOICE -ne 4" ]; do
         7)  echo "Installing Oh-My-Zsh"
             sudo dnf -y install zsh util-linux-user
             sh -c "$(curl -fsSL $OH_MY_ZSH_URL)"
-            echo "Installing zsh_autosuggestions"
-            git clone https://github.com/zsh-users/zsh-autosuggestions "${ZSH_CUSTOM:-~/.oh-my-zsh/custom}"/plugins/zsh-autosuggestions
             echo "change shell to ZSH"
             chsh -s "$(which zsh)"
             notify-send "Oh-My-Zsh is ready to rock n roll" --expire-time=10
