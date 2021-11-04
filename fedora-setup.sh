@@ -10,7 +10,7 @@ MENU="Please Choose one of the following options:"
 #Other variables
 OH_MY_ZSH_URL="https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh"
 
-#Check to see if Dialog is installed, if not install it
+#Check to see if Dialog is installed, if not install it - Thanks Kinkz_nl
 if [ $(rpm -q dialog 2>/dev/null | grep -c "is not installed") -eq 1 ]; then
 sudo dnf install -y dialog
 fi
