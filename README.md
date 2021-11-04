@@ -81,11 +81,11 @@ Dialog must be installed for the menu system to work and as such the script will
   - Installs the sound and video group
   
   - gstreamer plugins
-  
-  - 
+- **Install Microsoft Edge Stable**
+  - Installs the stable Microsoft Edge browser package
 
 ## Coming soon
 
-- [ ] Install Microsoft Edge Browser (Stable)
+- [x] Install Microsoft Edge Browser (Stable)
 
 - [ ] Install Microsoft Studio Code
