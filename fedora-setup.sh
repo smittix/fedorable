@@ -11,12 +11,9 @@ MENU="Please Choose one of the following options:"
 OH_MY_ZSH_URL="https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh"
 
 #Check to see if Dialog is installed, if not install it
-if [ $(dpkg-query -W -f='${Status}' dialog 2>/dev/null | grep -c "ok installed") -eq 0 ];
-then
-  sudo dnf install -y dialog;
+if [ $(rpm -q dialog 2>/dev/null | grep -c "is not installed") -eq 1 ]; then
+sudo dnf install -y dialog
 fi
-
-
 
 OPTIONS=(1 "Enable RPM Fusion - Enables the RPM Fusion Repos"
          2 "Enable Better Fonts - Better font rendering by Dawid"
