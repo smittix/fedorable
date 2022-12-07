@@ -40,7 +40,7 @@ while [ "$CHOICE -ne 4" ]; do
     case $CHOICE in
         1)  echo "Enabling RPM Fusion"
             sudo dnf install -y https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
-	        sudo dnf upgrade --refresh
+	    sudo dnf upgrade --refresh
             sudo dnf groupupdate -y core
             sudo dnf install -y rpmfusion-free-release-tainted
             sudo dnf install -y dnf-plugins-core
@@ -64,7 +64,7 @@ while [ "$CHOICE -ne 4" ]; do
             notify-send "Flatpak has now been enabled" --expire-time=10
            ;;
         5)  echo "Installing Software"
-            sudo dnf install -y lolcat figlet neofetch steam terminology btop discord gnome-extensions-app gnome-tweaks vlc neofetch cmatrix p7zip unzip gparted nikto nmap blender gimp digikam kdenlive transmission flameshot persepolis libreoffice deja-dup
+            sudo dnf install -y google-chrome-stable lolcat figlet neofetch steam terminology btop discord gnome-extensions-app gnome-tweaks vlc neofetch cmatrix p7zip unzip gparted nikto nmap blender gimp digikam kdenlive transmission flameshot persepolis libreoffice deja-dup
             notify-send "Software has been installed" --expire-time=10
            ;;
         6)  echo "Installing Oh-My-Zsh"
@@ -85,13 +85,13 @@ while [ "$CHOICE -ne 4" ]; do
             sudo dnf install -y gstreamer1-plugins-{bad-\*,good-\*,ugly-\*,base} gstreamer1-libav --exclude=gstreamer1-plugins-bad-free-devel ffmpeg gstreamer-ffmpeg
             sudo dnf install -y lame\* --exclude=lame-devel
             sudo dnf group upgrade -y --with-optional Multimedia
-	        sudo -s dnf copr enable peterwu/iosekva -y
+	    sudo dnf copr enable peterwu/iosevka -y
             sudo -s dnf -y copr enable dawid/better_fonts
             sudo dnf update -y
             sudo -s dnf install -y fontconfig-font-replacements
             sudo -s dnf install -y fontconfig-enhanced-defaults
-	        sudo dnf update -y
-	        sudo dnf install -y iosevka-term-fonts jetbrains-mono-fonts-all gnome-shell-theme-flat-remix flat-remix-icon-theme flat-remix-them terminus-fonts terminus-fonts-console google-noto-fonts-common mscore-fonts-all fira-code-fonts
+	    sudo dnf update -y
+	    sudo dnf install -y iosevka-term-fonts jetbrains-mono-fonts-all gnome-shell-theme-flat-remix flat-remix-icon-theme flat-remix-theme terminus-fonts terminus-fonts-console google-noto-fonts-common mscore-fonts-all fira-code-fonts
             notify-send "All done" --expire-time=10
            ;;
         9)  echo "Installing Nvidia Driver Akmod-Nvidia"
