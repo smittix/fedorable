@@ -16,13 +16,15 @@ sudo dnf install -y dialog
 fi
 
 OPTIONS=(1 "Enable RPM Fusion - Enables the RPM Fusion repos for your specific version"
-         2 "Enable Better Fonts - Better font rendering by Dawid"
+         2 "Update Firmware - If your system supports fw update delivery"
          3 "Speed up DNF - This enables fastestmirror, max downloads and deltarpms"
          4 "Enable Flatpak - Enables the Flatpak repository"
-         5 "Install Common Software - Installs a bunch of my most used software (see git)"
+         5 "Install Software - Installs a bunch of my most used software"
          6 "Install Oh-My-ZSH"
-         7 "Enable Tweaks, Extensions & Plugins"
-	 8 "Quit")
+         7 "Install Starship Prompt - INSTALL AFTER Oh-My-Zsh ONLY"
+         8 "Install Extras - Themes Fonts and Codecs"
+         9 "Install Nvidia - Install akmod nvidia drivers"
+	 10 "Quit")
 
 while [ "$CHOICE -ne 4" ]; do
     CHOICE=$(dialog --clear \
@@ -38,17 +40,17 @@ while [ "$CHOICE -ne 4" ]; do
     case $CHOICE in
         1)  echo "Enabling RPM Fusion"
             sudo dnf install -y https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
-	    sudo dnf upgrade --refresh
+	        sudo dnf upgrade --refresh
             sudo dnf groupupdate -y core
             sudo dnf install -y rpmfusion-free-release-tainted
             sudo dnf install -y dnf-plugins-core
             notify-send "RPM Fusion Enabled" --expire-time=10
            ;;
-        2)  echo "Enabling Better Fonts by Dawid"
-            sudo -s dnf -y copr enable dawid/better_fonts
-            sudo -s dnf install -y fontconfig-font-replacements
-            sudo -s dnf install -y fontconfig-enhanced-defaults
-            notify-send "Fonts prettified - enjoy!" --expire-time=10
+        2)  echo "Updating Firmware"
+            sudo fwupdmgr get-devices 
+            sudo fwupdmgr refresh --force 
+            sudo fwupdmgr get-updates 
+            sudo fwupdmgr update
            ;;
         3)  echo "Speeding Up DNF"
             echo 'fastestmirror=1' | sudo tee -a /etc/dnf/dnf.conf
@@ -62,7 +64,7 @@ while [ "$CHOICE -ne 4" ]; do
             notify-send "Flatpak has now been enabled" --expire-time=10
            ;;
         5)  echo "Installing Software"
-            sudo dnf install -y gnome-extensions-app gnome-tweaks gnome-shell-extension-appindicator vlc dropbox nautilus-dropbox dnfdragora audacious mscore-fonts-all neofetch cmatrix p7zip unzip gparted alacritty nikto nmap fira-code-fonts
+            sudo dnf install -y lolcat figlet neofetch steam terminology btop discord gnome-extensions-app gnome-tweaks vlc neofetch cmatrix p7zip unzip gparted nikto nmap blender gimp digikam kdenlive transmission flameshot persepolis libreoffice deja-dup
             notify-send "Software has been installed" --expire-time=10
            ;;
         6)  echo "Installing Oh-My-Zsh"
@@ -72,19 +74,31 @@ while [ "$CHOICE -ne 4" ]; do
             chsh -s "$(which zsh)"
             notify-send "Oh-My-Zsh is ready to rock n roll" --expire-time=10
            ;;
-        7)  echo "Installing Tweaks, extensions & plugins"
+        7)  echo "Installing Starship Prompt"
+            curl -sS https://starship.rs/install.sh | sh
+            echo "eval "$(starship init zsh)"" >> ~/.zshrc
+            notify-send "Starship Prompt Activated" --expire-time=10
+           ;;
+        8)  echo "Installing Extras"
             sudo dnf groupupdate -y sound-and-video
             sudo dnf install -y libdvdcss
             sudo dnf install -y gstreamer1-plugins-{bad-\*,good-\*,ugly-\*,base} gstreamer1-libav --exclude=gstreamer1-plugins-bad-free-devel ffmpeg gstreamer-ffmpeg
             sudo dnf install -y lame\* --exclude=lame-devel
             sudo dnf group upgrade -y --with-optional Multimedia
-	    sudo dnf install -y jetbrains-mono-fonts-all
-	    sudo dnf copr enable peterwu/iosekva -y
-	    sudo dnf search iosevka
-	    sudo dnf install iosevka-term-fonts
+	        sudo -s dnf copr enable peterwu/iosekva -y
+            sudo -s dnf -y copr enable dawid/better_fonts
+            sudo dnf update -y
+            sudo -s dnf install -y fontconfig-font-replacements
+            sudo -s dnf install -y fontconfig-enhanced-defaults
+	        sudo dnf update -y
+	        sudo dnf install -y iosevka-term-fonts jetbrains-mono-fonts-all gnome-shell-theme-flat-remix flat-remix-icon-theme flat-remix-them terminus-fonts terminus-fonts-console google-noto-fonts-common mscore-fonts-all fira-code-fonts
             notify-send "All done" --expire-time=10
-	   ;;
-        8)
+           ;;
+        9)  echo "Installing Nvidia Driver Akmod-Nvidia"
+            sudo dnf install -y akmod-nvidia
+            notify-send "All done" --expire-time=10
+	       ;;
+        10)
           exit 0
           ;;
     esac
