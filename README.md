@@ -18,74 +18,64 @@ Dialog must be installed for the menu system to work and as such the script will
   
   - Enables RPM Fusion repositories using the official method from the RPM Fusion website. 
 
-- **Enable Better Fonts**
-  
-  - "Provides free substitutions for popular proprietary fonts from Microsoft and Apple operating systems.
-    
-    It makes your web browsing more aesthetically pleasing - you won't be seeing DejaVu Sans font on every damn webpage." - [GitHub - silenc3r/fedora-better-fonts: Better looking fonts for Fedora](https://github.com/silenc3r/fedora-better-fonts)
-
+- **Update Firmware**
+  - Updates firmware providing you have hardwar that supports it.
 - **Speed up DNF**
-  
-  - Enables FastestMirror, Max Downloads and Deltarpms
-
+  - Enables fastest mirror
+  - Sets max parallel downloads to 10
+  - Enables DeltaRPMs
 - **Enable Flatpak**
-  
-  - Whilst Flatpak is enabled by default this option enables the repo
-
-- **Install Common Software** - Installs a bunch of my most used software
-  
-  - gnome-extensions-app 
-  
-  - gnome-tweaks 
-  
-  - gnome-shell-extension-appindicator 
-  
-  - vlc 
-  
-  - dropbox 
-  
-  - dnfdragora 
-  
-  - audacious 
-  
-  - mscore-fonts-all 
-  
-  - neofetch 
-  
-  - cmatrix 
-  
-  - p7zip 
-  
-  - unzip 
-  
-  - gparted
-
-- **Enable Flat Theme**
-  
-  - Installs and Enables the Flat GTK and Icon themes
-    
-    - gnome-shell-extension-user-theme 
-    
-    - paper-icon-theme 
-    
-    - flat-remix-icon-theme 
-    
-    - flat-remix-theme
-
+  - Adds the flatpak repo and updates
+- **Install Software**
+  - Installs the following pieces of software
+    1. google-chrome-stable 
+    2. lolcat 
+    3. figlet 
+    4. neofetch 
+    5. steam 
+    6. terminology 
+    7. btop 
+    8. discord 
+    9. gnome-extensions-app 
+    10. gnome-tweaks 
+    11. vlc 
+    12. neofetch 
+    13. cmatrix 
+    14. p7zip 
+    15. unzip 
+    16. gparted 
+    17. nikto 
+    18. nmap 
+    19. blender 
+    20. gimp 
+    21. digikam 
+    22. kdenlive 
+    23. transmission 
+    24. flameshot 
+    25. persepolis 
+    26. libreoffice 
+    27. deja-dup
 - **Install Oh-My-ZSH**
-  
-  - Installs Oh-My-ZSH and Powerline Fonts
-
-- **Enable Tweaks, Extensions & Plugins**
-  
-  - Installs the sound and video group
-  
-  - gstreamer plugins
-- **Install Microsoft Edge Stable**
-  - Installs the stable Microsoft Edge browser package
-
-## Coming soon
-
-- [x] Install Microsoft Edge Browser (Stable)
-
-- [ ] Install Microsoft Studio Code
+  - Installs Oh-My-Zsh - https://ohmyz.sh/
+- **Install Starship Prompt**
+  - Installs the Starship prompt for ZSH - https://starship.rs/
+- **Install Extras**
+  - Installs the following theme
+    1. gnome-shell-theme-flat-remix
+    2. flat-remix-theme
+    3. flat-remix-icon-theme
+  - Along with the following fonts
+    1. iosevka-term-fonts
+    2. jetbrains-mono-fonts-all
+    3. terminus-fonts
+    4. terminus-fonts-console
+    5. google-noto-fonts-common
+    6. mscore-fonts-all
+    7. fira-code-fonts
+    8. better fonts by dawid
+  - Installs the following extras
+    1. Sound and video group
+    2. libdvdcss
+    3. gstreamer plugins
+- **Install Nvidia**
+  - Installs the akmod-nvidia driver from the RPMFusion repo's
