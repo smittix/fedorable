@@ -14,18 +14,18 @@ Dialog must be installed for the menu system to work and as such the script will
 
 ## Options
 
-- # Enable RPM Fusion**
+- # Enable RPM Fusion
   - Enables RPM Fusion repositories using the official method from the RPM Fusion website. - [RPM Fusion](https://rpmfusion.org)
   > RPM Fusion provides software that the Fedora Project or Red Hat doesn't want to ship. That software is provided as precompiled RPMs for all current Fedora versions and current Red Hat Enterprise Linux or clones versions; you can use the RPM Fusion repositories with tools like yum and PackageKit.
-- # Update Firmware**
+- # Update Firmware
   - Updates firmware providing you have hardwar that supports it.
-- # Speed up DNF**
+- # Speed up DNF
   - Enables fastest mirror
   - Sets max parallel downloads to 10
   - Enables DeltaRPMs
-- # Enable Flatpak**
+- # Enable Flatpak
   - Adds the flatpak repo and updates
-- # Install Software**
+- # Install Software
   ## Installs the following pieces of software
     - google-chrome-stable - [Google Chrome Browser](https://www.google.com/intl/en_uk/chrome/)
     - lolcat  - [Just abit of fun](https://github.com/busyloop/lolcat)
@@ -49,11 +49,11 @@ Dialog must be installed for the menu system to work and as such the script will
     - persepolis - [A fast download manager similar to Internet Download Manager for Windows](https://persepolisdm.github.io/)
     - libreoffice - [Free and popular office suite with high compatibility to MS Office formats](https://www.libreoffice.org/)
     - deja-dup - [Easy to use backup tool from the GNOME project](https://wiki.gnome.org/Apps/DejaDup)
-- # Install Oh-My-ZSH**
+- # Install Oh-My-ZSH
   - Installs Oh-My-Zsh - [A ZSH configuration management framework](https://ohmyz.sh/)
-- # Install Starship Prompt**
+- # Install Starship Prompt
   - Installs the Starship prompt for ZSH - [A popular cross-shell highly customisable prompt](https://starship.rs/)
-- # Install Extras**
+- # Install Extras
   ## Installs the following theme
     - gnome-shell-theme-flat-remix - [Flat Remix Gnome Theme](https://drasite.com/flat-remix-gnome)
     - flat-remix-theme - [Flat Remix GTK Theme](https://drasite.com/flat-remix-gtk)
@@ -71,5 +71,5 @@ Dialog must be installed for the menu system to work and as such the script will
     - Sound and video group
     - libdvdcss
     - gstreamer plugins
-- # Install Nvidia**
+- # Install Nvidia
   - Installs the akmod-nvidia driver from the RPMFusion repo's
