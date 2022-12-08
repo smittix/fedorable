@@ -20,7 +20,7 @@ OPTIONS=(1 "Enable RPM Fusion - Enables the RPM Fusion repos for your specific v
          3 "Speed up DNF - This enables fastestmirror, max downloads and deltarpms"
          4 "Enable Flatpak - Enables the Flatpak repo and installs packages"
          5 "Install Software - Installs a bunch of my most used software"
-         6 "Install Oh-My-ZSH" "Installs Oh-My-ZSH and plugins"
+         6 "Install Oh-My-ZSH"
          7 "Install Starship Prompt - INSTALL AFTER Oh-My-Zsh ONLY"
          8 "Install Extras - Themes Fonts and Codecs"
          9 "Install Nvidia - Install akmod nvidia drivers"
