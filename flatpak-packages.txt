@@ -1,1 +1,3 @@
-org.telegram.desktop
+com.github.com.GradienceTeam.Gradience
+com.visualstudio.code
+org.signal.Signal
