@@ -65,7 +65,7 @@ while [ "$CHOICE -ne 4" ]; do
             notify-send "Flatpak has now been enabled" --expire-time=10
            ;;
         5)  echo "Installing Software"
-            sudo dnf install -y -f 'dnf-packages.txt'
+            sudo dnf install -y -f dnf-packages.txt
             notify-send "Software has been installed" --expire-time=10
            ;;
         6)  echo "Installing Oh-My-Zsh"
