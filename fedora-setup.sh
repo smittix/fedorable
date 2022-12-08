@@ -61,10 +61,11 @@ while [ "$CHOICE -ne 4" ]; do
         4)  echo "Enabling Flatpak"
             flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
             flatpak update
+            source 'flatpak-install.sh'
             notify-send "Flatpak has now been enabled" --expire-time=10
            ;;
         5)  echo "Installing Software"
-            sudo dnf install -y google-chrome-stable lolcat figlet neofetch steam terminology btop discord gnome-extensions-app gnome-tweaks vlc neofetch cmatrix p7zip unzip gparted nikto nmap blender gimp digikam kdenlive transmission flameshot persepolis libreoffice deja-dup
+            sudo dnf install -y -f 'dnf-packages.txt'
             notify-send "Software has been installed" --expire-time=10
            ;;
         6)  echo "Installing Oh-My-Zsh"
