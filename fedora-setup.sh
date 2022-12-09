@@ -96,7 +96,8 @@ while [ "$CHOICE -ne 4" ]; do
             notify-send "All done" --expire-time=10
            ;;
         9)  echo "Installing Nvidia Driver Akmod-Nvidia"
-            sudo dnf install -y akmod-nvidia
+            sudo dnf install -y akmod-nvidia 
+            sudo dnf install -y xorg-x11-drv-nvidia-cuda # Used for cuda/nvdec/nvenc support.
             notify-send "All done" --expire-time=10
 	       ;;
         10)
