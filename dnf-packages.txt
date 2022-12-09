@@ -13,6 +13,7 @@ neofetch
 cmatrix
 p7zip
 unzip
+unrar
 gparted
 nikto
 nmap
