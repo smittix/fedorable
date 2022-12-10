@@ -24,7 +24,8 @@ OPTIONS=(1 "Enable RPM Fusion - Enables the RPM Fusion repos for your specific v
          7 "Install Starship Prompt - INSTALL AFTER Oh-My-Zsh ONLY"
          8 "Install Extras - Themes Fonts and Codecs"
          9 "Install Nvidia - Install akmod nvidia drivers"
-	 10 "Quit")
+         10 "Gaming on Linux - Install software needed to game on Linux"
+	 11 "Quit")
 
 while [ "$CHOICE -ne 4" ]; do
     CHOICE=$(dialog --clear \
@@ -99,7 +100,18 @@ while [ "$CHOICE -ne 4" ]; do
             sudo dnf install -y akmod-nvidia
             notify-send "All done" --expire-time=10
 	       ;;
-        10)
+        10) echo "Installing gaming software"
+            sudo dnf install -y wine
+            sudo dnf install -y steam
+            sudo dnf install -y lutris
+            
+            echo "Installing ProtonUp-Qt"
+            flatpak install flathub net.davidotek.pupgui2 -y
+
+            # TODO ADD missing stuff...
+
+        ;;
+        11)
           exit 0
           ;;
     esac

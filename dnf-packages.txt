@@ -2,7 +2,6 @@ google-chrome-stable
 lolcat
 figlet
 neofetch
-steam
 terminology
 btop
 discord
