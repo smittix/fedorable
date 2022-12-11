@@ -100,19 +100,16 @@ while [ "$CHOICE -ne 4" ]; do
             sudo dnf install -y akmod-nvidia
             notify-send "All done" --expire-time=10
 	       ;;
-        10) echo "Installing gaming software"
+        10) echo "Installing Gaming Software"
             sudo dnf install -y wine
             sudo dnf install -y steam
             sudo dnf install -y lutris
             sudo dnf install -y mangohud
             sudo dnf install -y gamemode
             sudo dnf install -y goverlay
-
             # Flatpak 
             flatpak install flathub com.heroicgameslauncher.hgl -y
             flatpak install flathub net.davidotek.pupgui2 -y
-
-
         ;;
         11)
           exit 0
