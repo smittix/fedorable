@@ -104,11 +104,14 @@ while [ "$CHOICE -ne 4" ]; do
             sudo dnf install -y wine
             sudo dnf install -y steam
             sudo dnf install -y lutris
-            
-            echo "Installing ProtonUp-Qt"
+            sudo dnf install -y mangohud
+            sudo dnf install -y gamemode
+            sudo dnf install -y goverlay
+
+            # Flatpak 
+            flatpak install flathub com.heroicgameslauncher.hgl -y
             flatpak install flathub net.davidotek.pupgui2 -y
 
-            # TODO ADD missing stuff...
 
         ;;
         11)
