@@ -110,6 +110,7 @@ while [ "$CHOICE -ne 4" ]; do
             # Flatpak 
             flatpak install flathub com.heroicgameslauncher.hgl -y
             flatpak install flathub net.davidotek.pupgui2 -y
+            notify-send "Gaming software successfully installed" --expire-time=10
         ;;
         11)
           exit 0
