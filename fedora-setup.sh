@@ -61,7 +61,7 @@ while [ "$CHOICE -ne 4" ]; do
         4)  echo "Enabling Flatpak"
             flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
             flatpak update
-            source 'flatpak-install.sh'
+            source 'flatpak-install.sh'; exec $SHELL;
             notify-send "Flatpak has now been enabled" --expire-time=10
            ;;
         5)  echo "Installing Software"
@@ -93,7 +93,7 @@ while [ "$CHOICE -ne 4" ]; do
             sudo -s dnf install -y fontconfig-enhanced-defaults
 	    sudo dnf update -y
 	    sudo dnf install -y iosevka-term-fonts jetbrains-mono-fonts-all gnome-shell-theme-flat-remix flat-remix-icon-theme flat-remix-theme terminus-fonts terminus-fonts-console google-noto-fonts-common mscore-fonts-all fira-code-fonts
-            sh gsettings.sh
+            source 'gsettings.sh'; exec $SHELL;
             notify-send "All done" --expire-time=10
            ;;
         9)  echo "Installing Nvidia Driver Akmod-Nvidia"
