@@ -13,4 +13,3 @@ PACKAGES=$(cat flatpak-packages.txt)
 for PACKAGE in $PACKAGES; do
   flatpak install -y $PACKAGE
 done
-
