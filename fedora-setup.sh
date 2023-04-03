@@ -93,6 +93,7 @@ while [ "$CHOICE -ne 4" ]; do
             sudo -s dnf install -y fontconfig-enhanced-defaults
 	    sudo dnf update -y
 	    sudo dnf install -y iosevka-term-fonts jetbrains-mono-fonts-all gnome-shell-theme-flat-remix flat-remix-icon-theme flat-remix-theme terminus-fonts terminus-fonts-console google-noto-fonts-common mscore-fonts-all fira-code-fonts
+            sh gsettings.sh
             notify-send "All done" --expire-time=10
            ;;
         9)  echo "Installing Nvidia Driver Akmod-Nvidia"
