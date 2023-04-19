@@ -1,3 +1,4 @@
 com.github.GradienceTeam.Gradience
 com.visualstudio.code
 org.signal.Signal
+md.obsidian.Obsidian
