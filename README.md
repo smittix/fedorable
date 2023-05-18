@@ -62,10 +62,10 @@ Dialog must be installed for the menu system to work and as such the script will
     - **persepolis** - [A fast download manager similar to Internet Download Manager for Windows](https://persepolisdm.github.io/)
     - **libreoffice** - [Free and popular office suite with high compatibility to MS Office formats](https://www.libreoffice.org/)
     - **deja-dup** - [Easy to use backup tool from the GNOME project](https://wiki.gnome.org/Apps/DejaDup)
-- ## Install Oh-My-ZSH
+- ## Install Oh-My-ZSH with StarShip Prompt
   - **Installs Oh-My-Zsh** - [A ZSH configuration management framework](https://ohmyz.sh/)
-- ## Install Starship Prompt
   - **Installs the Starship prompt for ZSH** - [A popular cross-shell highly customisable prompt](https://starship.rs/)
+  
 - ## Install Extras
   ### Installs the following theme
     - **gnome-shell-theme-flat-remix** - [Flat Remix Gnome Theme](https://drasite.com/flat-remix-gnome)
