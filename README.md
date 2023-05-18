@@ -41,11 +41,7 @@ Dialog must be installed for the menu system to work and as such the script will
 - ## Install Software
   ### Installs the following pieces of software (or the applications you specify in dnf-packages.txt)
     - **google-chrome-stable** - [Google Chrome Browser](https://www.google.com/intl/en_uk/chrome/)
-    - **lolcat**  - [Just abit of fun](https://github.com/busyloop/lolcat)
-    - **figlet**  - [Large letter tool from ordinary text](http://www.figlet.org/)
     - **neofetch** - [CLI system information tool](http://www.figlet.org/)
-    - **steam** - [The Steam digital distribution service](https://store.steampowered.com/)
-    - **terminology** - [The Enlightenment Terminal Emulator](https://www.enlightenment.org/about-terminology.md#:~:text=Terminology%20is%20a%20terminal%20emulator,as%20possible%20in%20most%20respects.)
     - **btop** - [CLI based system monitor](https://github.com/aristocratos/btop)
     - **discord** - [The popular VoIP, IM and Social platform](https://discord.com)
     - **gnome-extensions-app** - Gnome extension management application
@@ -53,7 +49,6 @@ Dialog must be installed for the menu system to work and as such the script will
     - **vlc**  - [A cross platform multimedia player](https://www.videolan.org/)
     - **cmatrix** - [Matrix code in your terminal!](https://github.com/abishekvashok/cmatrix)
     - **p7zip** - [High compression archiving application](https://p7zip.sourceforge.net/)
-    - **blender** - [FOSS 3d creation suite](https://www.blender.org/)
     - **gimp** - [GNU Image Manipulation Program](https://gimp.org)
     - **digikam** - [Professional photo management application](https://www.digikam.org/)
     - **kdenlive** - [FOSS cross platform video editing application](https://kdenlive.org/en/)
@@ -84,5 +79,5 @@ Dialog must be installed for the menu system to work and as such the script will
     - **Sound and video group**
     - **libdvdcss**
     - **gstreamer plugins**
-- ## Install Nvidia
-  - Installs the akmod-nvidia driver from the RPMFusion repo's
+  ### Install Nvidia
+    - **Installs the akmod-nvidia driver from the RPMFusion repo's
