@@ -80,4 +80,4 @@ Dialog must be installed for the menu system to work and as such the script will
     - **libdvdcss**
     - **gstreamer plugins**
   ### Install Nvidia
-    - **Installs the akmod-nvidia driver from the RPMFusion repo's
+    - **Installs the akmod-nvidia driver from the RPMFusion repo's**
