@@ -10,13 +10,11 @@ p7zip
 unzip
 unrar
 gparted
-nikto
 nmap
 gimp
-digikam
 kdenlive
 transmission
 flameshot
-persepolis
 libreoffice
 deja-dup
+inkscape
