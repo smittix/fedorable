@@ -16,3 +16,6 @@ gsettings set org.gnome.desktop.wm.preferences button-layout ":minimize,maximize
 
 # Set new windows centered
 gsettings set org.gnome.mutter center-new-windows true
+
+# Fractional Scaling - THIS IS EXPERIMENTAL
+gsettings set org.gnome.mutter experimental-features "['scale-monitor-framebuffer']"
