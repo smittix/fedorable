@@ -7,8 +7,8 @@ Fedora-Setup is a personal script I created to help with post install tasks such
 Dialog must be installed for the menu system to work and as such the script will check to see if Dialog is installed. If not, it will ask you to install it.
 
 ## Usage
-1. Set the script to be executable `chmod -x fedora-setup.sh` \
-2. Run the script `./fedora-setup.sh`
+1. Set the script to be executable `chmod -x fedorable.sh` \
+2. Run the script `./fedorable.sh`
 
 ## Files
 
@@ -35,7 +35,6 @@ Dialog must be installed for the menu system to work and as such the script will
   - **Enables DeltaRPMs**
 - ## Enable Flatpak and Packages
   ### Adds the flatpak repo, updates and installs the following packages (or what you ahve specified in flatpak-packages.txt)
-  - **Microsoft Visual Studio Code** - [Popular free code editor](https://code.visualstudio.com/)
   - **Signal Desktop** - [A cross platform secure messaging service](https://signal.org/en/download/)
   - **Gradience** - [Change the look and feel of Adwaita](https://github.com/GradienceTeam/Gradience)
 - ## Install Software
@@ -69,7 +68,6 @@ Dialog must be installed for the menu system to work and as such the script will
     - **google-noto-fonts-common** - [Google Noto Sans Font](https://fonts.google.com/noto/specimen/Noto+Sans)
     - **mscore-fonts-all**
     - **fira-code-fonts** - [Google Fira Code Font](https://fonts.google.com/specimen/Fira+Code)
-    - **better fonts by dawid** - [Dawid's COPR](https://copr.fedorainfracloud.org/coprs/dawid/better_fonts/)
   ### Installs the following extras
     - **Sound and video group**
     - **libdvdcss**
