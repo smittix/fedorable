@@ -3,7 +3,7 @@ PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin
 HEIGHT=20
 WIDTH=90
 CHOICE_HEIGHT=4
-BACKTITLE="Fedora Setup Util - By Smittix - https://lsass.co.uk"
+BACKTITLE="Fedorable Setup Util - By Smittix - https://lsass.co.uk"
 TITLE="Please Make a selection"
 MENU="Please Choose one of the following options:"
 
@@ -39,7 +39,7 @@ while [ "$CHOICE -ne 4" ]; do
     case $CHOICE in
         1)  echo "Enabling RPM Fusion"
             sudo dnf install -y https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
-	        sudo dnf upgrade --refresh
+	    sudo dnf upgrade --refresh
             sudo dnf groupupdate -y core
             sudo dnf install -y rpmfusion-free-release-tainted
             sudo dnf install -y dnf-plugins-core
@@ -81,13 +81,9 @@ while [ "$CHOICE -ne 4" ]; do
             sudo dnf install -y gstreamer1-plugins-{bad-\*,good-\*,ugly-\*,base} gstreamer1-libav --exclude=gstreamer1-plugins-bad-free-devel ffmpeg gstreamer-ffmpeg
             sudo dnf install -y lame\* --exclude=lame-devel
             sudo dnf group upgrade -y --with-optional Multimedia
-	        sudo dnf copr enable peterwu/iosevka -y
-            sudo -s dnf -y copr enable dawid/better_fonts
+	    sudo dnf copr enable peterwu/iosevka -y
             sudo dnf update -y
-            sudo -s dnf install -y fontconfig-font-replacements
-            sudo -s dnf install -y fontconfig-enhanced-defaults
-	        sudo dnf update -y
-	        sudo dnf install -y iosevka-term-fonts jetbrains-mono-fonts-all gnome-shell-theme-flat-remix flat-remix-icon-theme flat-remix-theme terminus-fonts terminus-fonts-console google-noto-fonts-common mscore-fonts-all fira-code-fonts
+     	    sudo dnf install -y iosevka-term-fonts jetbrains-mono-fonts-all gnome-shell-theme-flat-remix flat-remix-icon-theme flat-remix-theme terminus-fonts terminus-fonts-console google-noto-fonts-common mscore-fonts-all fira-code-fonts
             source gsettings.sh
             notify-send "All done" --expire-time=10
            ;;
