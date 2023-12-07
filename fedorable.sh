@@ -3,7 +3,7 @@ PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin
 HEIGHT=20
 WIDTH=90
 CHOICE_HEIGHT=4
-BACKTITLE="Fedorable Setup Util - By Smittix - https://lsass.co.uk"
+BACKTITLE="Fedorable a Fedora Post Install Setup Util - By Smittix - https://lsass.co.uk"
 TITLE="Please Make a selection"
 MENU="Please Choose one of the following options:"
 
