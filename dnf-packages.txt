@@ -7,6 +7,7 @@ gnome-tweaks
 vlc
 neofetch
 p7zip
+p7zip-plugins
 unzip
 unrar
 gparted
