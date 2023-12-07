@@ -12,9 +12,6 @@ unrar
 gparted
 nmap
 gimp
-kdenlive
-transmission
 flameshot
 libreoffice
-deja-dup
 inkscape
