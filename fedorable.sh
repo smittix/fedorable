@@ -73,6 +73,7 @@ while [ "$CHOICE -ne 4" ]; do
             notify-send "Oh-My-Zsh is ready to rock n roll" --expire-time=10
             curl -sS https://starship.rs/install.sh | sh
             echo "eval "$(starship init zsh)"" >> ~/.zshrc
+	    starship preset tokyo-night -o ~/.config/starship.toml\n
             notify-send "Starship Prompt Activated" --expire-time=10
            ;;
         7)  echo "Installing Extras"
