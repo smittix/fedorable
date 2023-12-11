@@ -16,3 +16,4 @@ gimp
 flameshot
 libreoffice
 inkscape
+cozy
