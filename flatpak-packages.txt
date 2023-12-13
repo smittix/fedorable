@@ -2,3 +2,4 @@ com.github.GradienceTeam.Gradience
 org.signal.Signal
 md.obsidian.Obsidian
 io.bassi.Amberol
+com.discordapp.Discord
