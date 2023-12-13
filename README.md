@@ -1,8 +1,12 @@
-# Fedorable is a Post Install Helper Script
-
+<h1 align="center">
+  Fedorable - a Post Install Helper Script
+</h1>
+<p align="center">
+  <img width="300" height="300" src="logo.png">
+</p>
 ## What's all this then?
 
-Fedora-Setup is a personal script I created to help with post install tasks such as tweaks and software installs. It's written in Bash and utilises Dialog for a friendlier menu system.
+Fedorable is a personal script I created to help with post install tasks such as tweaks and software installs. It's written in Bash and utilises Dialog for a friendlier menu system.
 
 Dialog must be installed for the menu system to work and as such the script will check to see if Dialog is installed. If not, it will ask you to install it.
 
