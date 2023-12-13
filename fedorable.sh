@@ -84,7 +84,7 @@ while [ "$CHOICE -ne 4" ]; do
             sudo dnf group upgrade -y --with-optional Multimedia
 	    sudo dnf copr enable peterwu/iosevka -y
             sudo dnf update -y
-     	    sudo dnf install -y iosevka-term-fonts jetbrains-mono-fonts-all gnome-shell-theme-flat-remix flat-remix-icon-theme flat-remix-theme terminus-fonts terminus-fonts-console google-noto-fonts-common mscore-fonts-all fira-code-fonts
+     	    sudo dnf install -y iosevka-term-fonts jetbrains-mono-fonts-all gnome-shell-theme-flat-remix flat-remix-icon-theme flat-remix-theme terminus-fonts terminus-fonts-console google-noto-fonts-common fira-code-fonts
             source gsettings.sh
             notify-send "All done" --expire-time=10
            ;;
