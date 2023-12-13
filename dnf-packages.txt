@@ -1,7 +1,6 @@
 google-chrome-stable
 neofetch
 btop
-discord
 gnome-extensions-app
 gnome-tweaks
 vlc
