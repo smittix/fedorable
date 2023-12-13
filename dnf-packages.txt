@@ -13,7 +13,10 @@ unrar
 gparted
 nmap
 gimp
-flameshot
 libreoffice
 inkscape
 cozy
+obs-studio
+qbittorrent
+amberol
+calibre
