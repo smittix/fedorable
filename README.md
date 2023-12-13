@@ -4,6 +4,7 @@
 <p align="center">
   <img width="300" height="300" src="logo.png">
 </p>
+
 ## What's all this then?
 
 Fedorable is a personal script I created to help with post install tasks such as tweaks and software installs. It's written in Bash and utilises Dialog for a friendlier menu system.
