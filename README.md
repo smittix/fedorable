@@ -12,8 +12,8 @@ Fedorable is a personal script I created to help with post install tasks such as
 Dialog must be installed for the menu system to work and as such the script will check to see if Dialog is installed. If not, it will ask you to install it.
 
 ## Usage
-1. Set the script to be executable `chmod -x fedorable.sh` \
-2. Run the script `./fedorable.sh
+1. Set the script to be executable `chmod -x fedorable.sh`
+2. Run the script `./fedorable.sh`
 
 ## Files
 
