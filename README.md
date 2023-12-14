@@ -30,7 +30,6 @@ Dialog must be installed for the menu system to work and as such the script will
 - ## Update Firmware
   - **Updates firmware providing you have hardwar that supports it.**
 - ## Speed up DNF
-  - **Enables fastest mirror**
   - **Sets max parallel downloads to 10**
   - **Enables DeltaRPMs**
 - ## Enable Flatpak and Packages
