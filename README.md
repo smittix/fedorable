@@ -13,7 +13,7 @@ Dialog must be installed for the menu system to work and as such the script will
 
 ## Usage
 1. Set the script to be executable `chmod -x fedorable.sh` \
-2. Run the script `./fedorable.sh`
+2. Run the script `./fedorable.sh
 
 ## Files
 
