@@ -4,7 +4,6 @@ btop
 gnome-extensions-app
 gnome-tweaks
 vlc
-neofetch
 p7zip
 p7zip-plugins
 unzip
