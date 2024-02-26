@@ -20,7 +20,7 @@ OPTIONS=(1 "Enable RPM Fusion - Enables the RPM Fusion repos for your specific v
          3 "Speed up DNF - Sets max parallel downloads to 10"
          4 "Enable Flatpak - Enables the Flatpak repo and installs packages located in flatpak-packages.txt"
          5 "Install Software - Installs software located in dnf-packages.txt"
-         6 "Install Oh-My-ZSH - Installs Oh-My-ZSH along with Starship prompt"
+         6 "Install Oh-My-ZSH - Installs Oh-My-ZSH"
          7 "Install Extras - Themes Fonts and Codecs"
          8 "Install Nvidia - Install akmod Nvidia drivers"
 	     9 "Quit")
@@ -71,10 +71,6 @@ while [ "$CHOICE -ne 4" ]; do
             echo "change shell to ZSH"
             chsh -s "$(which zsh)"
             notify-send "Oh-My-Zsh is ready to rock n roll" --expire-time=10
-            curl -sS https://starship.rs/install.sh | sh
-            echo "eval "$(starship init zsh)"" >> ~/.zshrc
-	    starship preset tokyo-night -o ~/.config/starship.toml\n
-            notify-send "Starship Prompt Activated" --expire-time=10
            ;;
         7)  echo "Installing Extras"
             sudo dnf groupupdate -y sound-and-video
