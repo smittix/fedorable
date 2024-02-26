@@ -17,5 +17,3 @@ inkscape
 cozy
 obs-studio
 qbittorrent
-amberol
-calibre
