@@ -3,7 +3,7 @@ PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin
 HEIGHT=20
 WIDTH=90
 CHOICE_HEIGHT=4
-BACKTITLE="Fedorable a Fedora Post Install Setup Util - By Smittix - https://lsass.co.uk"
+BACKTITLE="Fedorable a Fedora Post Install Setup Util for GNOME - By Smittix - https://lsass.co.uk"
 TITLE="Please Make a selection"
 MENU="Please Choose one of the following options:"
 
@@ -66,22 +66,28 @@ while [ "$CHOICE -ne 4" ]; do
             notify-send "Software has been installed" --expire-time=10
            ;;
         6)  echo "Installing Oh-My-Zsh with Starship"
-            sudo dnf -y install zsh util-linux-user
-            sh -c "$(curl -fsSL $OH_MY_ZSH_URL)"
+            sudo dnf -y install zsh curl util-linux-user
+            sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
             echo "change shell to ZSH"
             chsh -s "$(which zsh)"
+            curl -sS https://starship.rs/install.sh | sh
+            notify-send "Oh-My-Zsh is ready to rock n roll" --expire-time=10
+            echo 'eval "$(starship init zsh)"' >> ~/.zshrc
             notify-send "Oh-My-Zsh is ready to rock n roll" --expire-time=10
            ;;
         7)  echo "Installing Extras"
             sudo dnf groupupdate -y sound-and-video
+            sudo dnf swap ffmpeg-free ffmpeg --allowerasing
             sudo dnf install -y libdvdcss
             sudo dnf install -y gstreamer1-plugins-{bad-\*,good-\*,ugly-\*,base} gstreamer1-libav --exclude=gstreamer1-plugins-bad-free-devel ffmpeg gstreamer-ffmpeg
             sudo dnf install -y lame\* --exclude=lame-devel
             sudo dnf group upgrade -y --with-optional Multimedia
+	    sudo dnf config-manager --set-enabled fedora-cisco-openh264
+            sudo dnf install -y gstreamer1-plugin-openh264 mozilla-openh264
 	    sudo dnf copr enable peterwu/iosevka -y
             sudo dnf update -y
-     	    sudo dnf install -y iosevka-term-fonts jetbrains-mono-fonts-all gnome-shell-theme-flat-remix flat-remix-icon-theme flat-remix-theme terminus-fonts terminus-fonts-console google-noto-fonts-common fira-code-fonts
-            source gsettings.sh
+     	    sudo dnf install -y iosevka-term-fonts jetbrains-mono-fonts-all terminus-fonts terminus-fonts-console google-noto-fonts-common fira-code-fonts cabextract xorg-x11-font-utils fontconfig
+            sudo rpm -i https://downloads.sourceforge.net/project/mscorefonts2/rpms/msttcore-fonts-installer-2.6-1.noarch.rpm
             notify-send "All done" --expire-time=10
            ;;
         8)  echo "Installing Nvidia Driver Akmod-Nvidia"
