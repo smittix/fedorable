@@ -1,4 +1,3 @@
-google-chrome-stable
 neofetch
 btop
 gnome-extensions-app
@@ -16,3 +15,9 @@ inkscape
 cozy
 obs-studio
 qbittorrent
+kitty
+solaar
+imhex
+orbvis
+element
+gpredict
