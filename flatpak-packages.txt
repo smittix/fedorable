@@ -1,7 +1,7 @@
-com.github.GradienceTeam.Gradience
 org.signal.Signal
 md.obsidian.Obsidian
 io.bassi.Amberol
 com.discordapp.Discord
 io.github.wojciech_graj.OrbVis
 im.riot.Riot
+com.spotify.Client

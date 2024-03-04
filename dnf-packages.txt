@@ -19,3 +19,4 @@ kitty
 solaar
 imhex
 gpredict
+kdenlive
