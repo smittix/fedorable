@@ -66,11 +66,7 @@ Scripts for Cinnamon and KDE will become available in the future.
   - **Installs the Starship prompt for ZSH** - [A popular cross-shell highly customisable prompt](https://starship.rs/)
   
 - ## Install Extras
-  ### Installs the following theme
-    - **gnome-shell-theme-flat-remix** - [Flat Remix Gnome Theme](https://drasite.com/flat-remix-gnome)
-    - **flat-remix-theme** - [Flat Remix GTK Theme](https://drasite.com/flat-remix-gtk)
-    - **flat-remix-icon-theme** - [Flate Remix Icon Theme](https://drasite.com/flat-remix)
-  ### Along with the following fonts
+  ### Installs the following fonts
     - **iosevka-term-fonts** - [Iosevka Font](https://github.com/be5invis/Iosevka)
     - **jetbrains-mono-fonts-all** - [JetBrains Font](https://www.jetbrains.com/lp/mono/)
     - **terminus-fonts** - [Terminus Font](https://terminus-font.sourceforge.net/)
