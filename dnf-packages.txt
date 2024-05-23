@@ -1,18 +1,14 @@
-neofetch
 btop
 gnome-extensions-app
 gnome-tweaks
-vlc
 p7zip
 p7zip-plugins
 unzip
 unrar
-gparted
 nmap
 gimp
 libreoffice
 inkscape
-cozy
 obs-studio
 qbittorrent
 kitty
@@ -20,3 +16,6 @@ solaar
 imhex
 gpredict
 kdenlive
+eza
+java-latest-openjdk
+java-latest-openjdk-devel
