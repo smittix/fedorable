@@ -22,3 +22,7 @@ gsettings set org.gnome.mutter center-new-windows true
 
 # Fractional Scaling - THIS IS EXPERIMENTAL
 gsettings set org.gnome.mutter experimental-features "['scale-monitor-framebuffer']"
+
+
+# Disable Auto Maximise
+gsettings set org.gnome.mutter auto-maximize false
