@@ -15,7 +15,7 @@ WIDTH=90
 CHOICE_HEIGHT=10
 
 # Titles and messages
-BACKTITLE="Fedorable - A Fedora Post Install Setup Util for GNOME - By Smittix - https://lsass.co.uk"
+BACKTITLE="Fedorable v2.0 - A Fedora Post Install Setup Util for GNOME - By Smittix - https://smittix.net"
 TITLE="Please Make a Selection"
 MENU="Please Choose one of the following options:"
 
@@ -37,15 +37,15 @@ fi
 
 # Options for the menu
 OPTIONS=(
-    1 "Enable RPM Fusion - Enables the RPM Fusion repos for your specific version"
-    2 "Update Firmware - If your system supports FW update delivery"
+    1 "Enable RPM Fusion - Enables RPM Fusion Repositories"
+    2 "Update Firmware - For systems that support firmware delivery"
     3 "Speed up DNF - Sets max parallel downloads to 10"
-    4 "Enable Flatpak - Enables the Flatpak repo and installs packages located in flatpak-packages.txt"
+    4 "Install Flatpaks - Enables Flatpak & installs packages located in flatpak-packages.txt"
     5 "Install Software - Installs software located in dnf-packages.txt"
     6 "Install Oh-My-ZSH - Installs Oh-My-ZSH & Starship Prompt"
     7 "Install Extras - Themes, Fonts, and Codecs"
     8 "Install Nvidia - Install akmod Nvidia drivers"
-    9 "Customize - Configure system settings"
+    9 "Customise - Configures system settings"
     10 "Quit"
 )
 

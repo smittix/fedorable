@@ -19,7 +19,7 @@ The Fedorable script contains the following key functionalities:
 1. **Enable RPM Fusion**: Adds the RPM Fusion repositories to your system, which provide additional software packages that are not available in the default Fedora repositories.
 2. **Update Firmware**: Utilizes fwupdmgr to check for and install any available firmware updates.
 3. **Speed Up DNF**: Optimizes DNF, Fedora's package manager, by increasing the number of parallel downloads.
-4. **Enable Flatpak**: Sets up Flatpak support and installs any applications listed in a predefined flatpak-packages.txt file.
+4. **Install Flatpaks**: Sets up Flatpak support and installs any applications listed in a predefined flatpak-packages.txt file.
 5. **Install Software**: Installs software packages listed in the dnf-packages.txt file using DNF.
 6. **Install Oh-My-Zsh & Starship Prompt**: Installs the Oh-My-Zsh shell and Starship prompt for an enhanced command-line experience.
 7. **Install Extras**: Installs multimedia codecs, fonts, and themes for a better user experience.
@@ -63,7 +63,7 @@ Once the script starts, you will be presented with a menu of options:
 3. **Speed Up DNF**:
 
 - This option modifies your DNF configuration to allow up to 10 simultaneous downloads, speeding up package installations and upgrades.
-4. **Enable Flatpak**:
+4. **Install Flatpaks**:
 
 - Installs Flatpak support on your system.
 - If a ```flatpak-packages.txt``` file is available, it will automatically install the listed Flatpak applications.
