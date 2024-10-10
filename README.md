@@ -2,7 +2,7 @@
   Fedorable - a post install helper script for the GNOME desktop environment.
 </h1>
 <p align="center">
-  <img width="300" height="300" src="logo.png">
+  <img width="300" height="300" src="/images/logo.png">
 </p>
 
 ## What's all this then?
