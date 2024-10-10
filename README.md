@@ -1,82 +1,118 @@
 <h1 align="center">
   Fedorable - a post install helper script for the GNOME desktop environment.
+
 </h1>
 <p align="center">
-  <img width="300" height="300" src="/images/logo.png">
+  <img width="300" height="300" src="./images/logo.png">
 </p>
 
-## What's all this then?
+# Introduction
+The Fedorable script is a powerful post-install setup utility for Fedora-based systems running the GNOME desktop environment. It automates several system configuration tasks, from enabling repositories and installing software to customizing your GNOME settings, ensuring your system is optimized and ready to use.
+This guide will help you understand the various features of the script and how to use them effectively.
 
-Fedorable is a personal script I created to help with post install tasks such as tweaks and software installs. It's written in Bash and utilises Dialog for a friendlier menu system. 
+# Screenshot
+![Screenshot](./images/screenshot.png)
 
-It is fully customisable by the user by either editing the script itself or changing the package selections within the flatpak-packages.txt or dnf-packages.txt files.
+# Contents of the Script
+The Fedorable script contains the following key functionalities:
 
-Dialog must be installed for the menu system to work and as such the script will check to see if Dialog is installed. If not, it will ask you to install it.
+1. **Enable RPM Fusion**: Adds the RPM Fusion repositories to your system, which provide additional software packages that are not available in the default Fedora repositories.
+2. **Update Firmware**: Utilizes fwupdmgr to check for and install any available firmware updates.
+3. **Speed Up DNF**: Optimizes DNF, Fedora's package manager, by increasing the number of parallel downloads.
+4. **Enable Flatpak**: Sets up Flatpak support and installs any applications listed in a predefined flatpak-packages.txt file.
+5. **Install Software**: Installs software packages listed in the dnf-packages.txt file using DNF.
+6. **Install Oh-My-Zsh & Starship Prompt**: Installs the Oh-My-Zsh shell and Starship prompt for an enhanced command-line experience.
+7. **Install Extras**: Installs multimedia codecs, fonts, and themes for a better user experience.
+8. **Install Nvidia Drivers**: Installs the akmod Nvidia driver if you have an Nvidia GPU.
+9. **Customise GNOME**: Provides options to customize your GNOME desktop settings such as setting the hostname, configuring fonts, clock settings, and window behavior.
+10. **Quit**: Exits the script
 
-Scripts for Cinnamon and KDE will become available in the future.
+# How to Use the Script
 
-## Usage
-1. Set the script to be executable `chmod -x fedorable.sh`
-2. Run the script `./fedorable.sh`
-3. Enter user password when required (for installation of packages)
+## Prerequisites
 
-## Files
+1. You need to have Fedora installed with the GNOME desktop environment.
+2. Ensure you have root/sudo privileges on your system, as many of the tasks require elevated permissions.
 
-- **flatpak-packages.txt** - This file contains a list of all flat packages to install you can customise this with your choice of applications by application-id.
-- **dnf-packages.txt** - This file contains a list of all applications that will be installed via the Fedora and RPMFusion repositories.
+## Steps to Run the Script
+1. Download or Clone the Script: Download the script or clone the repository to your local machine.
+```
+git clone https://github.com/your-repo/fedorable.git
+cd fedorable
+```
+2. Make the Script Executable: Ensure the script has executable permissions:
+```
+chmod +x fedorable.sh
+```
+3. Run the Script: Run the script with superuser privileges to perform administrative tasks:
+```
+sudo ./fedorable.sh
+```
 
-## Screenshot
-![Screenshot](/images/screenshot.png)
-# Options
+# Menu Navigation
+Once the script starts, you will be presented with a menu of options:
 
-- ## Enable RPM Fusion
-  - Enables RPM Fusion repositories using the official method from the RPM Fusion website. - [RPM Fusion](https://rpmfusion.org)
-  > RPM Fusion provides software that the Fedora Project or Red Hat doesn't want to ship. That software is provided as precompiled RPMs for all current Fedora versions and current Red Hat Enterprise Linux or clones versions; you can use the RPM Fusion repositories with tools like yum and PackageKit.
-- ## Update Firmware
-  - **Updates firmware providing you have hardwar that supports it.**
-- ## Speed up DNF
-  - **Sets max parallel downloads to 10**
-- ## Enable Flatpak and Packages
-  ### Adds the flatpak repo, updates and installs the following packages (or what you have specified in flatpak-packages.txt)
-  - **Signal Desktop** - [A cross platform secure messaging service](https://signal.org/en/download/)
-  - **Obsidian** - [Obsidian is the private and flexible writing app that adapts to the way you think](https://obsidian.md/)
-  - **Amberol** - [Amberol is a music player with no delusions of grandeur. If you just want to play music available on your local system then Amberol is the music player you are looking for.](https://apps.gnome.org/en-GB/Amberol/)
-  - **Discord** - [The popular VoIP, IM and Social platform](https://discord.com)
-  - **OrbVis** - [OrbVis is a real-time satellite tracking and visualisation application](https://github.com/wojciech-graj/OrbVis)
-  - **Element** - [Decentralised, encrypted chat & collaboration powered by Matrix](https://element.io/)
-  - **Spotify** - [Spotify is a digital music, podcast, and video service](https://spotify.com)
-- ## Install Software
-  ### Installs the following pieces of software (or the applications you specify in dnf-packages.txt)
-    - **neofetch** - [CLI system information tool](http://www.figlet.org/)
-    - **btop** - [CLI based system monitor](https://github.com/aristocratos/btop)
-    - **gnome-extensions-app** - [GNOME extension management application](https://gitlab.gnome.org/GNOME/gnome-tweaks)
-    - **gnome-tweaks** - [GNOME Tweak Tool](https://github.com/GNOME/gnome-tweaks)
-    - **vlc**  - [A cross platform multimedia player](https://www.videolan.org/)
-    - **p7zip** - [High compression archiving application](https://p7zip.sourceforge.net/)
-    - **gimp** - [GNU Image Manipulation Program](https://gimp.org)
-    - **libreoffice** - [Free and popular office suite with high compatibility to MS Office formats](https://www.libreoffice.org/)
-    - **obs-studio** - [Free and open source software for video recording and live streaming](https://obsproject.com/)
-    - **qBitorrent** - [The qBittorrent project aims to provide an open-source software alternative to µTorrent](https://www.qbittorrent.org/)
-    - **Solaar** - [Linux Device Manager for Logitech Unifying Receivers and Devices](https://pwr-solaar.github.io/Solaar/)
-    - **imhex** - [ImHex is a Hex Editor, a tool to display, decode and analyze binary data to reverse engineer their format, extract informations or patch values in them.](https://imhex.werwolv.net/)
-    - **gpredict** - [Gpredict is a real time satellite tracking and orbit prediction program for the Linux desktop](https://github.com/csete/gpredict)
-    - **kdenlive** - [Free and Open Source Video Editor](https://kdenlive.org/en/)
-- ## Install Oh-My-ZSH with StarShip Prompt
-  - **Installs Oh-My-Zsh** - [A ZSH configuration management framework](https://ohmyz.sh/)
-  - **Installs the Starship prompt for ZSH** - [A popular cross-shell highly customisable prompt](https://starship.rs/)
-  
-- ## Install Extras
-  ### Installs the following fonts
-    - **iosevka-term-fonts** - [Iosevka Font](https://github.com/be5invis/Iosevka)
-    - **jetbrains-mono-fonts-all** - [JetBrains Font](https://www.jetbrains.com/lp/mono/)
-    - **terminus-fonts** - [Terminus Font](https://terminus-font.sourceforge.net/)
-    - **terminus-fonts-console** - [Terminus Font](https://terminus-font.sourceforge.net/)
-    - **google-noto-fonts-common** - [Google Noto Sans Font](https://fonts.google.com/noto/specimen/Noto+Sans)
-    - **MScore fonts** - [ore fonts for the Web was a project started by Microsoft in 1996 to create a standard pack of fonts for the World Wide Web](https://mscorefonts2.sourceforge.net/)
-    - **fira-code-fonts** - [Google Fira Code Font](https://fonts.google.com/specimen/Fira+Code)
-  ### Installs the following extras
-    - **Sound and video group**
-    - **libdvdcss** - [libdvdcss is a simple library designed for accessing DVDs](https://videolan.videolan.me/libdvdcss/)
-    - **gstreamer plugins** - [a framework for streaming media](https://github.com/GStreamer/gstreamer)
-  ### Install Nvidia
-    - **Installs the akmod-nvidia driver from the RPMFusion repo's** - [An akmod is a type of package similar to dkms. As you start your computer, the akmod system will check if there are any missing kmods and if so, rebuild a new kmod for you. Akmods have more overhead than regular kmod packages as they require a few development tools such as gcc and automake in order to be able to build new kmods locally](https://rpmfusion.org/Howto/NVIDIA#Akmods)
+1. **Enable RPM Fusion**:
+
+- Select this option to enable both the free and non-free RPM Fusion repositories.
+- It will also refresh your DNF cache and perform a system upgrade.
+
+2. **Update Firmware**:
+
+- This will check your system for any available firmware updates and apply them.
+3. **Speed Up DNF**:
+
+- This option modifies your DNF configuration to allow up to 10 simultaneous downloads, speeding up package installations and upgrades.
+4. **Enable Flatpak**:
+
+- Installs Flatpak support on your system.
+- If a ```flatpak-packages.txt``` file is available, it will automatically install the listed Flatpak applications.
+5. **Install Software**:
+
+- Installs packages listed in ```dnf-packages.txt```. Ensure this file exists and contains the software packages you wish to install.
+6. **Install Oh-My-Zsh & Starship Prompt**:
+- Installs the Zsh shell and Oh-My-Zsh framework, along with the Starship prompt for an enhanced shell experience.
+7. **Install Extras**:
+
+- This option installs multimedia codecs, themes, and fonts (including JetBrains Mono, Iosevka, and Google Noto fonts).
+- It also enables support for Microsoft TrueType fonts (msttcorefonts).
+8. **Install Nvidia Drivers**:
+
+- This installs the akmod Nvidia driver if your system uses an Nvidia graphics card.
+9. **Customise**:
+
+- This opens a sub-menu where you can perform several customization tasks related to your GNOME desktop such as:
+		
+	1. **Set Hostname**:
+	2. **Setup Custom Fonts**:
+	3. **Customise Clock**:
+	4. **Enable Window Buttons**: 
+	5. **Center Windows**:
+	6. **Disable Auto-Maximize**:
+
+# Customisation Options Breakdown
+In the Customise menu, the following actions can be performed:
+- **Set Hostname**: Change your machine's hostname to a new value. This requires sudo permissions to apply.
+
+- **Setup Custom Fonts**: Configure default fonts in GNOME, including system fonts, document fonts, monospace fonts, and titlebar fonts.
+
+- **Customize Clock**: Modify the appearance of the clock on your GNOME panel. You can set it to a 24-hour format, display the date, and hide or show seconds.
+
+- **Enable Window Buttons**: Ensures your GNOME windows have minimize, maximize, and close buttons, making window management easier.
+
+- **Center Windows**: Forces new windows to open in the center of the screen rather than defaulting to random positions.
+
+- **Disable Auto-Maximize**: Prevents new windows from automatically maximizing, so they open at their default size instead.
+
+***You can also edit any part of this to your own preference***
+
+# Logging and Error Handling
+- **Logging**: The script keeps a log of all actions in a file called ```setup_log.txt```. You can refer to this file to track what the script has done or troubleshoot if something goes wrong.
+
+- **Error Handling**: 
+If the script encounters an error, it logs the error and notifies you via the terminal and GNOME notifications (if notify-send is available). Ensure to check the log file for more details.
+
+# Notes and Tips
+- For custom installations, you can modify the ```dnf-packages.txt``` and ```flatpak-packages.txt``` files to suit your preferences before running the script.
+- If you encounter any issues, check the log file (setup_log.txt) for details about what might have gone wrong.
+

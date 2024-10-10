@@ -20,7 +20,16 @@ LOG_FILE="setup_log.txt"
 # Log function
 log_action() {
     local message=$1
-    echo "$(date '+%Y-%m-%d %H:%M:%S') - $message" | tee -a $LOG_FILE
+    echo "$(date '+%Y-%m-%d %H:%M:%S') - $message" | tee -a "$LOG_FILE"
+}
+
+# Check for required permissions
+check_permissions() {
+    if [[ $EUID -ne 0 ]]; then
+        log_action "This script must be run as root. Exiting."
+        notify "This script must be run as root. Exiting."
+        exit 1
+    fi
 }
 
 # Check for dialog installation
@@ -39,7 +48,8 @@ OPTIONS=(
     6 "Install Oh-My-ZSH - Installs Oh-My-ZSH & Starship Prompt"
     7 "Install Extras - Themes, Fonts, and Codecs"
     8 "Install Nvidia - Install akmod Nvidia drivers"
-    9 "Quit"
+    9 "Customize - Configure system settings"
+    10 "Quit"
 )
 
 # Function to display notifications
@@ -86,8 +96,8 @@ enable_flatpak() {
     echo "Enabling Flatpak"
     flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
     flatpak update -y
-    if [ -f flatpak-install.sh ]; then
-        source flatpak-install.sh
+    if [ -f ./assets/flatpak-install.sh ]; then
+        source ./assets/flatpak-install.sh
     else
         log_action "flatpak-install.sh not found"
     fi
@@ -97,8 +107,8 @@ enable_flatpak() {
 # Function to install software
 install_software() {
     echo "Installing Software"
-    if [ -f dnf-packages.txt ]; then
-        sudo dnf install -y $(cat dnf-packages.txt)
+    if [ -f ./assets/dnf-packages.txt ]; then
+        sudo dnf install -y $(cat ./assets/dnf-packages.txt)
         notify "Software has been installed"
     else
         log_action "dnf-packages.txt not found"
@@ -141,7 +151,65 @@ install_nvidia() {
     notify "Please wait 5 minutes until rebooting"
 }
 
+# Customization Functions
+# Function to set the hostname
+set_hostname() {
+    hostname=$(dialog --inputbox "Enter new hostname:" 10 50 3>&1 1>&2 2>&3 3>&-)
+    if [ ! -z "$hostname" ]; then
+        sudo hostnamectl set-hostname "$hostname"
+        dialog --msgbox "Hostname set to $hostname" 10 50
+    else
+        dialog --msgbox "Hostname not set. Input was empty." 10 50
+    fi
+}
+
+# Function to setup custom fonts
+setup_fonts() {
+    gsettings set org.gnome.desktop.interface document-font-name 'Noto Sans Regular 10'
+    gsettings set org.gnome.desktop.interface font-name 'Noto Sans Regular 10'
+    gsettings set org.gnome.desktop.interface monospace-font-name 'JetBrains Mono 10'
+    gsettings set org.gnome.desktop.wm.preferences titlebar-font 'Noto Sans Regular 10'
+    dialog --msgbox "Custom fonts have been set." 10 50
+}
+
+# Function to customize the clock
+customize_clock() {
+    gsettings set org.gnome.desktop.interface clock-format '24h'
+    gsettings set org.gnome.desktop.interface clock-show-date true
+    gsettings set org.gnome.desktop.interface clock-show-seconds false
+    gsettings set org.gnome.desktop.interface clock-show-weekday false
+    dialog --msgbox "Clock has been customized." 10 50
+}
+
+# Function to enable window buttons
+enable_window_buttons() {
+    gsettings set org.gnome.desktop.wm.preferences button-layout ":minimize,maximize,close"
+    dialog --msgbox "Window buttons (minimize, maximize, close) have been enabled." 10 50
+}
+
+# Function to center windows
+center_windows() {
+    gsettings set org.gnome.mutter center-new-windows true
+    dialog --msgbox "Windows will now be centered." 10 50
+}
+
+# Function to disable auto-maximize
+disable_auto_maximize() {
+    gsettings set org.gnome.mutter auto-maximize false
+    dialog --msgbox "Auto-maximize has been disabled." 10 50
+}
+
+# Function to perform all customization tasks
+perform_all() {
+    setup_fonts
+    customize_clock
+    enable_window_buttons
+    center_windows
+    disable_auto_maximize
+}
+
 # Main loop
+check_permissions  # Ensure the script is run with appropriate permissions
 while true; do
     CHOICE=$(dialog --clear \
                 --backtitle "$BACKTITLE" \
@@ -162,7 +230,37 @@ while true; do
         6) install_oh_my_zsh ;;
         7) install_extras ;;
         8) install_nvidia ;;
-        9) log_action "User chose to quit the script."; exit 0 ;;
+        9) 
+            # Customization menu
+            while true; do
+                CUSTOM_CHOICE=$(dialog --clear --backtitle "Fedora System Configuration" \
+                    --title "Customization Menu" \
+                    --menu "Choose an option:" 15 50 8 \
+                    1 "Set Hostname" \
+                    2 "Setup Custom Fonts" \
+                    3 "Customize Clock" \
+                    4 "Enable Window Buttons" \
+                    5 "Center Windows" \
+                    6 "Disable Auto-Maximize" \
+                    7 "Perform All Tasks" \
+                    8 "Exit" \
+                    3>&1 1>&2 2>&3)
+                
+                case $CUSTOM_CHOICE in
+                    1) set_hostname ;;
+                    2) setup_fonts ;;
+                    3) customize_clock ;;
+                    4) enable_window_buttons ;;
+                    5) center_windows ;;
+                    6) disable_auto_maximize ;;
+                    7) perform_all ;;
+                    8) break ;;
+                    *) dialog --msgbox "Invalid option. Please try again." 10 50 ;;
+                esac
+            done
+            ;;
+        10) log_action "User chose to quit the script."; exit 0 ;;
         *) log_action "Invalid option selected: $CHOICE";;
     esac
 done
+
