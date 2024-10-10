@@ -1,5 +1,11 @@
 #!/bin/bash
 
+# Check if the script is run as root
+if [[ $EUID -ne 0 ]]; then
+   echo "This script must be run as root. Please run with sudo or as the root user." 1>&2
+   exit 1
+fi
+
 # Set PATH
 PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin
 
@@ -21,15 +27,6 @@ LOG_FILE="setup_log.txt"
 log_action() {
     local message=$1
     echo "$(date '+%Y-%m-%d %H:%M:%S') - $message" | tee -a "$LOG_FILE"
-}
-
-# Check for required permissions
-check_permissions() {
-    if [[ $EUID -ne 0 ]]; then
-        log_action "This script must be run as root. Exiting."
-        notify "This script must be run as root. Exiting."
-        exit 1
-    fi
 }
 
 # Check for dialog installation

@@ -1,0 +1,2 @@
+2024-10-10 20:46:47 - Installed dialog.
+2024-10-10 20:46:51 - User chose to quit the script.
