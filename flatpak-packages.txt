@@ -4,3 +4,5 @@ com.discordapp.Discord
 io.github.wojciech_graj.OrbVis
 im.riot.Riot
 com.spotify.Client
+org.gnome.DejaDup
+org.libretro.RetroArch
