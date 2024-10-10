@@ -26,7 +26,7 @@ Scripts for Cinnamon and KDE will become available in the future.
 - **dnf-packages.txt** - This file contains a list of all applications that will be installed via the Fedora and RPMFusion repositories.
 
 ## Screenshot
-![Screenshot](screenshot.png)
+![Screenshot](/images/screenshot.png)
 # Options
 
 - ## Enable RPM Fusion
