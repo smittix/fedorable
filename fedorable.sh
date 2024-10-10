@@ -162,37 +162,37 @@ set_hostname() {
 
 # Function to setup custom fonts
 setup_fonts() {
-    gsettings set org.gnome.desktop.interface document-font-name 'Noto Sans Regular 10'
-    gsettings set org.gnome.desktop.interface font-name 'Noto Sans Regular 10'
-    gsettings set org.gnome.desktop.interface monospace-font-name 'JetBrains Mono 10'
-    gsettings set org.gnome.desktop.wm.preferences titlebar-font 'Noto Sans Regular 10'
+    sudo -u "$SUDO_USER" dbus-launch gsettings set org.gnome.desktop.interface document-font-name 'Noto Sans Regular 10'
+    sudo -u "$SUDO_USER" dbus-launch gsettings set org.gnome.desktop.interface font-name 'Noto Sans Regular 10'
+    sudo -u "$SUDO_USER" dbus-launch gsettings set org.gnome.desktop.interface monospace-font-name 'JetBrains Mono 10'
+    sudo -u "$SUDO_USER" dbus-launch gsettings set org.gnome.desktop.wm.preferences titlebar-font 'Noto Sans Regular 10'
     dialog --msgbox "Custom fonts have been set." 10 50
 }
 
 # Function to customize the clock
 customize_clock() {
-    gsettings set org.gnome.desktop.interface clock-format '24h'
-    gsettings set org.gnome.desktop.interface clock-show-date true
-    gsettings set org.gnome.desktop.interface clock-show-seconds false
-    gsettings set org.gnome.desktop.interface clock-show-weekday false
+    sudo -u "$SUDO_USER" dbus-launch gsettings set org.gnome.desktop.interface clock-format '24h'
+    sudo -u "$SUDO_USER" dbus-launch gsettings set org.gnome.desktop.interface clock-show-date true
+    sudo -u "$SUDO_USER" dbus-launch gsettings set org.gnome.desktop.interface clock-show-seconds false
+    sudo -u "$SUDO_USER" dbus-launch gsettings set org.gnome.desktop.interface clock-show-weekday false
     dialog --msgbox "Clock has been customized." 10 50
 }
 
 # Function to enable window buttons
 enable_window_buttons() {
-    gsettings set org.gnome.desktop.wm.preferences button-layout ":minimize,maximize,close"
+    sudo -u "$SUDO_USER" dbus-launch gsettings set org.gnome.desktop.wm.preferences button-layout ":minimize,maximize,close"
     dialog --msgbox "Window buttons (minimize, maximize, close) have been enabled." 10 50
 }
 
 # Function to center windows
 center_windows() {
-    gsettings set org.gnome.mutter center-new-windows true
+    sudo -u "$SUDO_USER" dbus-launch gsettings set org.gnome.mutter center-new-windows true
     dialog --msgbox "Windows will now be centered." 10 50
 }
 
 # Function to disable auto-maximize
 disable_auto_maximize() {
-    gsettings set org.gnome.mutter auto-maximize false
+    sudo -u "$SUDO_USER" dbus-launch gsettings set org.gnome.mutter auto-maximize false
     dialog --msgbox "Auto-maximize has been disabled." 10 50
 }
 
