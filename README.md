@@ -37,7 +37,7 @@ The Fedorable script contains the following key functionalities:
 ## Steps to Run the Script
 1. Download or Clone the Script: Download the script or clone the repository to your local machine.
 ```
-git clone https://github.com/your-repo/fedorable.git
+git clone https://github.com/smittix/fedorable.git
 cd fedorable
 ```
 2. Make the Script Executable: Ensure the script has executable permissions:
