@@ -40,7 +40,7 @@ OPTIONS=(
     1 "Enable RPM Fusion - Enables RPM Fusion Repositories"
     2 "Update Firmware - For systems that support firmware delivery"
     3 "Speed up DNF - Sets max parallel downloads to 10"
-    4 "Install Flatpaks - Enables Flatpak & installs packages located in flatpak-packages.txt"
+    4 "Enable Flathub - Enables FlatHub & installs packages located in flatpak-packages.txt"
     5 "Install Software - Installs software located in dnf-packages.txt"
     6 "Install Oh-My-ZSH - Installs Oh-My-ZSH & Starship Prompt"
     7 "Install Extras - Themes, Fonts, and Codecs"
@@ -66,8 +66,8 @@ enable_rpm_fusion() {
         https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm \
         https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
     sudo dnf upgrade --refresh -y
-    sudo dnf groupupdate -y core
-    sudo dnf install -y rpmfusion-free-release-tainted dnf-plugins-core
+    sudo dnf group upgrade -y core
+    sudo dnf install -y rpmfusion-free-release-tainted rpmfusion-nonfree-release-tainted dnf-plugins-core
     notify "RPM Fusion Enabled"
 }
 
