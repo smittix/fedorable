@@ -116,10 +116,10 @@ install_software() {
 install_oh_my_zsh() {
     echo "Installing Oh-My-Zsh with Starship"
     sudo dnf install -y zsh curl util-linux-user
-    sh -c "$(curl -fsSL $OH_MY_ZSH_URL)" "" --unattended
-    chsh -s "$(which zsh)"
-    curl -sS https://starship.rs/install.sh | sh
-    echo 'eval "$(starship init zsh)"' >> ~/.zshrc
+    sudo -u "$SUDO_USER" sh -c "$(curl -fsSL $OH_MY_ZSH_URL)" "" --unattended
+    sudo -u "$SUDO_USER" chsh -s "$(which zsh)"
+    sudo -u "$SUDO_USER" curl -sS https://starship.rs/install.sh | sh
+    sudo -u "$SUDO_USER" echo 'eval "$(starship init zsh)"' >> ~/.zshrc
     notify "Oh-My-Zsh is ready to rock n roll"
 }
 
