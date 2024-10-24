@@ -21,3 +21,6 @@ java-latest-openjdk
 java-latest-openjdk-devel
 krita
 fastfetch
+git-credential-oauth
+lynis
+rkhunter
