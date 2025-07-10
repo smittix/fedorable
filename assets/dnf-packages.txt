@@ -12,11 +12,9 @@ inkscape
 obs-studio
 qbittorrent
 kitty
-solaar
 imhex
 gpredict
 kdenlive
-eza
 java-latest-openjdk
 java-latest-openjdk-devel
 krita
@@ -24,3 +22,4 @@ fastfetch
 git-credential-oauth
 lynis
 rkhunter
+fastfetch
