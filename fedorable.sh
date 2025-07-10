@@ -28,7 +28,7 @@ LOG_FILE="setup_log.txt"
 
 # Ensure log file is writable
 if ! touch "$LOG_FILE" &>/dev/null; then
-    echo "❌ Cannot write to log file $LOG_FILE" >&2
+    echo "Cannot write to log file $LOG_FILE" >&2
     exit 1
 fi
 
