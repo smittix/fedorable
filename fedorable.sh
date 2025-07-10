@@ -1,7 +1,7 @@
 #!/bin/bash
 
 set -euo pipefail
-trap 'echo -e "\n❌ ERROR at line $LINENO: $BASH_COMMAND (exit code: $?)" >&2' ERR
+trap 'echo -e "\n ERROR at line $LINENO: $BASH_COMMAND (exit code: $?)" >&2' ERR
 
 # Ensure script is run as root
 if [[ $EUID -ne 0 ]]; then
