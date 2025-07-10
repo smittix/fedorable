@@ -1,8 +1,11 @@
 org.signal.Signal
 com.github.neithern.g4music
 com.discordapp.Discord
-io.github.wojciech_graj.OrbVis
 im.riot.Riot
 com.spotify.Client
 org.gnome.DejaDup
-org.libretro.RetroArch
+org.onlyoffice.desktopeditors
+net.cozic.joplin_desktop
+io.github.shiftey.Desktop
+com.protonvpn.www
+io.missioncenter.MissionCenter
