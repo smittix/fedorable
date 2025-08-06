@@ -202,17 +202,14 @@ install_extras() {
         bash /tmp/Tela-icon-theme/install.sh -a
         rm -rf /tmp/Tela-icon-theme
     fi
-    sudo -u "$ACTUAL_USER" DBUS_SESSION_BUS_ADDRESS="$DBUS_SESSION_BUS_ADDRESS" gsettings set org.gnome.desktop.interface icon-theme "Tela-orange"
 
     if [[ ! -d /tmp/Qogir-icon-theme ]]; then
         git clone https://github.com/vinceliuice/Qogir-icon-theme.git /tmp/Qogir-icon-theme
         bash /tmp/Qogir-icon-theme/install.sh -c all -t all
         rm -rf /tmp/Qogir-icon-theme
     fi
-    sudo -u "$ACTUAL_USER" DBUS_SESSION_BUS_ADDRESS="$DBUS_SESSION_BUS_ADDRESS" gsettings set org.gnome.desktop.interface icon-theme "Qogir"
 
     dnf install -y papirus-icon-theme
-    sudo -u "$ACTUAL_USER" DBUS_SESSION_BUS_ADDRESS="$DBUS_SESSION_BUS_ADDRESS" gsettings set org.gnome.desktop.interface icon-theme "Papirus"
 
     notify "Extra packages, fonts, and icon themes installed."
 }
