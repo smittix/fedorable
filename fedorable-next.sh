@@ -1,7 +1,7 @@
 #!/bin/bash
 #
-# Fedorable v2.4 - Fedora Post Install Setup for GNOME
-# Optimised, no theme install, hang‑free extras
+# Fedorable v2.5 - Fedora Post Install Setup for GNOME
+# Menu always shows unless --install-all, hang-free extras, optimised
 # By Smittix - https://smittix.net
 #
 
@@ -47,7 +47,7 @@ cleanup() { [[ -d /tmp/fedorable_tmp ]] && rm -rf /tmp/fedorable_tmp; }
 ########################################
 show_help() {
     cat <<EOF
-${BOLD}Fedorable v2.4 - Fedora Post Install Setup${RESET}
+${BOLD}Fedorable v2.5 - Fedora Post Install Setup${RESET}
 By Smittix - https://smittix.net
 
 Usage:
@@ -147,7 +147,6 @@ install_extras() {
 
     bg_jobs=0
 
-    # Google Fonts
     if [[ ! -d "$ACTUAL_HOME/.local/share/fonts/google" ]]; then
         (
             mkdir -p "$ACTUAL_HOME/.local/share/fonts/google"
@@ -159,7 +158,6 @@ install_extras() {
         log_action "Google Fonts already installed, skipping."
     fi
 
-    # Adobe Fonts
     for repo in "${ADOBE_FONTS[@]}"; do
         if [[ ! -d "$ACTUAL_HOME/.local/share/fonts/adobe-fonts/$repo" ]]; then
             (
@@ -198,9 +196,12 @@ disable_auto_maximize() { gset org.gnome.mutter auto-maximize false; notify "Aut
 perform_all() { setup_fonts; customize_clock; enable_window_buttons; center_windows; disable_auto_maximize; }
 
 ########################################
-# CLI Direct Task Execution
+# CLI Direct Task Execution + Menu
 ########################################
+ran_tasks=false
+
 if [[ ${#RUN_TASKS[@]} -gt 0 ]]; then
+    ran_tasks=true
     for task in "${RUN_TASKS[@]}"; do
         case $task in
             --enable-rpm-fusion) enable_rpm_fusion ;;
@@ -222,15 +223,11 @@ if [[ ${#RUN_TASKS[@]} -gt 0 ]]; then
             --apply-all-customisations) perform_all ;;
         esac
     done
-    exit 0
 fi
 
-########################################
-# Menu Loop
-########################################
-if ! $NO_DIALOG && command -v dialog &>/dev/null && ! $INSTALL_ALL; then
+if ! $NO_DIALOG && command -v dialog &>/dev/null && [[ "$INSTALL_ALL" == false ]]; then
     while true; do
-        CHOICE=$(dialog --clear --title "Fedorable v2.4" --menu "Choose an option:" 20 70 10 \
+        CHOICE=$(dialog --clear --title "Fedorable v2.5" --menu "Choose an option:" 20 70 10 \
             1 "System Setup" \
             2 "Software Installation" \
             3 "Hardware Drivers" \
