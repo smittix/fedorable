@@ -102,7 +102,7 @@ install_oh_my_zsh() {
     grep -qxF "$ZSH_PATH" /etc/shells || echo "$ZSH_PATH" >> /etc/shells
     sudo chsh -s "$ZSH_PATH" "$ACTUAL_USER"
     ZSH_CUSTOM_DIR="${ZSH_CUSTOM:-$ACTUAL_HOME/.oh-my-zsh/custom}"
-    for plugin in zsh-autosuggestions zsh-autocomplete zsh-history-substring-search zsh-syntax-highlighting; do
+    for plugin in zsh-autosuggestions zsh-history-substring-search zsh-syntax-highlighting; do
         [[ ! -d "$ZSH_CUSTOM_DIR/plugins/$plugin" ]] && \
         sudo -u "$ACTUAL_USER" git clone "https://github.com/zsh-users/$plugin.git" "$ZSH_CUSTOM_DIR/plugins/$plugin"
     done
@@ -112,7 +112,7 @@ install_oh_my_zsh() {
     grep -qxF 'eval "$(starship init zsh)"' "$ACTUAL_HOME/.zshrc" || \
         echo 'eval "$(starship init zsh)"' | sudo -u "$ACTUAL_USER" tee -a "$ACTUAL_HOME/.zshrc" >/dev/null
     sudo -u "$ACTUAL_USER" sed -i \
-        -e 's/plugins=(git)/plugins=(dnf aliases git zsh-autosuggestions zsh-autocomplete zsh-history-substring-search zsh-syntax-highlighting)/' \
+        -e 's/plugins=(git)/plugins=(dnf aliases git zsh-autosuggestions zsh-history-substring-search zsh-syntax-highlighting)/' \
         -e 's/ZSH_THEME="robbyrussell"/ZSH_THEME="jonathan"/' \
         "$ACTUAL_HOME/.zshrc"
     notify "Oh-My-ZSH, plugins, and Starship prompt installed."
