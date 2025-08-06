@@ -62,7 +62,7 @@ Fedorable’s interface is divided into **five main sections**:
 * **Enable RPM Fusion** – Enables free & non-free RPM Fusion repositories.
 * **Update Firmware** – Checks and installs firmware updates.
 * **Optimise DNF Speed** – Enables parallel downloads for faster package installs.
-* **Enable Flathub** – Adds the Flathub repository and installs Flatpak apps.
+* **Enable Flathub** – Adds the Flathub repository and installs Flatpak apps listed in `assets/flatpak-packages.txt`.
 
 ### **Software Installation**
 
