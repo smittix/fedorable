@@ -1,7 +1,7 @@
 #!/bin/bash
 #
-# Fedorable v2.5 - Fedora Post Install Setup for GNOME
-# Menu always shows unless --install-all, hang-free extras, optimised
+# Fedorable v2.6 - Fedora Post Install Setup for GNOME
+# Always menu unless --install-all, hang-free extras, optimised
 # By Smittix - https://smittix.net
 #
 
@@ -17,7 +17,6 @@ LOG_FILE="fedorable_$(date +%F_%H-%M-%S).log"
 DRY_RUN=false
 NO_DIALOG=false
 INSTALL_ALL=false
-RUN_TASKS=()
 
 # External URLs & Repos
 OH_MY_ZSH_URL="https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh"
@@ -47,36 +46,17 @@ cleanup() { [[ -d /tmp/fedorable_tmp ]] && rm -rf /tmp/fedorable_tmp; }
 ########################################
 show_help() {
     cat <<EOF
-${BOLD}Fedorable v2.5 - Fedora Post Install Setup${RESET}
+${BOLD}Fedorable v2.6 - Fedora Post Install Setup${RESET}
 By Smittix - https://smittix.net
 
 Usage:
-  sudo ./fedorable.sh [options] [tasks]
+  sudo ./fedorable.sh [options]
 
 Options:
   --help               Show this help menu and exit
   --dry-run            Print commands without executing them
   --no-dialog          Run without interactive menus
   --install-all        Run all steps without menus
-
-Tasks:
-  --enable-rpm-fusion  Enable RPM Fusion
-  --update-firmware    Update firmware
-  --speed-up-dnf       Optimise DNF
-  --enable-flathub     Enable Flathub
-  --install-software   Install DNF packages
-  --install-oh-my-zsh  Install Oh-My-ZSH + Starship
-  --install-extras     Install fonts & codecs (no themes)
-  --install-intel-driver Install Intel driver
-  --install-amd-codecs Install AMD codecs
-  --install-nvidia-drivers Install NVIDIA drivers
-  --set-hostname       Set hostname
-  --setup-fonts        Apply fonts
-  --customize-clock    Customise clock
-  --enable-window-buttons Enable min/max buttons
-  --center-windows     Center new windows
-  --disable-auto-maximise Disable auto-maximise
-  --apply-all-customisations Apply all customisations
 EOF
 }
 
@@ -89,11 +69,6 @@ for arg in "$@"; do
         --dry-run) DRY_RUN=true ;;
         --no-dialog) NO_DIALOG=true ;;
         --install-all) INSTALL_ALL=true ;;
-        --enable-rpm-fusion|--update-firmware|--speed-up-dnf|--enable-flathub|\
-        --install-software|--install-oh-my-zsh|--install-extras|--install-intel-driver|\
-        --install-amd-codecs|--install-nvidia-drivers|--set-hostname|--setup-fonts|\
-        --customize-clock|--enable-window-buttons|--center-windows|--disable-auto-maximise|\
-        --apply-all-customisations) RUN_TASKS+=("$arg") ;;
         *) echo "Unknown option: $arg"; exit 1 ;;
     esac
 done
@@ -196,38 +171,24 @@ disable_auto_maximize() { gset org.gnome.mutter auto-maximize false; notify "Aut
 perform_all() { setup_fonts; customize_clock; enable_window_buttons; center_windows; disable_auto_maximize; }
 
 ########################################
-# CLI Direct Task Execution + Menu
+# Menu or Install-All
 ########################################
-ran_tasks=false
-
-if [[ ${#RUN_TASKS[@]} -gt 0 ]]; then
-    ran_tasks=true
-    for task in "${RUN_TASKS[@]}"; do
-        case $task in
-            --enable-rpm-fusion) enable_rpm_fusion ;;
-            --update-firmware) update_firmware ;;
-            --speed-up-dnf) speed_up_dnf ;;
-            --enable-flathub) enable_flatpak ;;
-            --install-software) install_software ;;
-            --install-oh-my-zsh) install_oh_my_zsh ;;
-            --install-extras) install_extras ;;
-            --install-intel-driver) install_intel_media_driver ;;
-            --install-amd-codecs) install_amd_codecs ;;
-            --install-nvidia-drivers) install_nvidia_drivers ;;
-            --set-hostname) set_hostname ;;
-            --setup-fonts) setup_fonts ;;
-            --customize-clock) customize_clock ;;
-            --enable-window-buttons) enable_window_buttons ;;
-            --center-windows) center_windows ;;
-            --disable-auto-maximise) disable_auto_maximize ;;
-            --apply-all-customisations) perform_all ;;
-        esac
-    done
-fi
-
-if ! $NO_DIALOG && command -v dialog &>/dev/null && [[ "$INSTALL_ALL" == false ]]; then
+if [[ "$INSTALL_ALL" == true ]]; then
+    enable_rpm_fusion
+    update_firmware
+    speed_up_dnf
+    enable_flatpak
+    install_software
+    install_oh_my_zsh
+    install_extras
+    install_intel_media_driver
+    install_amd_codecs
+    install_nvidia_drivers
+    perform_all
+    notify "All tasks completed."
+else
     while true; do
-        CHOICE=$(dialog --clear --title "Fedorable v2.5" --menu "Choose an option:" 20 70 10 \
+        CHOICE=$(dialog --clear --title "Fedorable v2.6" --menu "Choose an option:" 20 70 10 \
             1 "System Setup" \
             2 "Software Installation" \
             3 "Hardware Drivers" \
@@ -304,17 +265,4 @@ if ! $NO_DIALOG && command -v dialog &>/dev/null && [[ "$INSTALL_ALL" == false ]
             5) exit 0 ;;
         esac
     done
-else
-    enable_rpm_fusion
-    update_firmware
-    speed_up_dnf
-    enable_flatpak
-    install_software
-    install_oh_my_zsh
-    install_extras
-    install_intel_media_driver
-    install_amd_codecs
-    install_nvidia_drivers
-    perform_all
-    notify "All tasks completed."
 fi
