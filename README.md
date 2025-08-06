@@ -1,118 +1,105 @@
-<h1 align="center">
-  Fedorable - a post install helper script for the GNOME desktop environment.
+# Fedorable v2.0
 
 </h1>
 <p align="center">
   <img width="300" height="300" src="./images/logo.png">
 </p>
 
-# Introduction
-The Fedorable script is a powerful post-install setup utility for Fedora-based systems running the GNOME desktop environment. It automates several system configuration tasks, from enabling repositories and installing software to customizing your GNOME settings, ensuring your system is optimized and ready to use.
-This guide will help you understand the various features of the script and how to use them effectively.
+Fedorable is a **post-install setup utility** for Fedora GNOME, designed to streamline common configuration tasks after installing Fedora.  
+It provides an interactive `dialog`-based menu for installing software, enabling repositories, configuring the desktop, and applying useful tweaks.
 
-# Screenshot
-![Screenshot](./images/screenshot.png)
+---
 
-# Contents of the Script
-The Fedorable script contains the following key functionalities:
+## Features
 
-1. **Enable RPM Fusion**: Adds the RPM Fusion repositories to your system, which provide additional software packages that are not available in the default Fedora repositories.
-2. **Update Firmware**: Utilizes fwupdmgr to check for and install any available firmware updates.
-3. **Speed Up DNF**: Optimizes DNF, Fedora's package manager, by increasing the number of parallel downloads.
-4. **Enable FlatHub**: Enables FlatHub support and installs any applications listed in a predefined flatpak-packages.txt file.
-5. **Install Software**: Installs software packages listed in the dnf-packages.txt file using DNF.
-6. **Install Oh-My-Zsh & Starship Prompt**: Installs the Oh-My-Zsh shell and Starship prompt for an enhanced command-line experience.
-7. **Install Extras**: Installs multimedia codecs, fonts, and themes for a better user experience.
-8. **Install Nvidia Drivers**: Installs the akmod Nvidia driver if you have an Nvidia GPU.
-9. **Customise GNOME**: Provides options to customize your GNOME desktop settings such as setting the hostname, configuring fonts, clock settings, and window behavior.
-10. **Quit**: Exits the script
+Fedorable can:
+- Enable additional repositories (e.g. RPM Fusion, Flathub)
+- Install essential software and fonts
+- Configure GNOME appearance and behaviour
+- Install hardware drivers
+- Apply common performance tweaks
 
-# How to Use the Script
+---
 
-## Prerequisites
+## Requirements
 
-1. You need to have Fedora installed with the GNOME desktop environment.
-2. Ensure you have root/sudo privileges on your system, as many of the tasks require elevated permissions.
+- Fedora (tested on GNOME edition)
+- Root privileges (`sudo` or root login)
+- Internet connection
 
-## Steps to Run the Script
-1. Download or Clone the Script: Download the script or clone the repository to your local machine.
-```
+Fedorable will install `dialog` automatically if it is missing.
+
+---
+
+## Installation
+
+Clone this repository and run the script:
+
+```bash
 git clone https://github.com/smittix/fedorable.git
 cd fedorable
-```
-2. Make the Script Executable: Ensure the script has executable permissions:
-```
 chmod +x fedorable.sh
-```
-3. Run the Script: Run the script with superuser privileges to perform administrative tasks:
-```
 sudo ./fedorable.sh
 ```
 
-# Menu Navigation
-Once the script starts, you will be presented with a menu of options:
 
-1. **Enable RPM Fusion**:
+## Menu Structure (v2.0)
 
-- Select this option to enable both the free and non-free RPM Fusion repositories.
-- It will also refresh your DNF cache and perform a system upgrade.
+Fedorable’s interface is divided into **five main sections**:
 
-2. **Update Firmware**:
+### **Main Menu**
 
-- This will check your system for any available firmware updates and apply them.
-3. **Speed Up DNF**:
+```
+1  System Setup
+2  Software Installation
+3  Hardware Drivers
+4  Customisation
+5  Quit
+```
 
-- This option modifies your DNF configuration to allow up to 10 simultaneous downloads, speeding up package installations and upgrades.
-4. **Enable FlatHub**:
+### **System Setup**
 
-- Enables the FlatHub repo on your system.
-- If a ```flatpak-packages.txt``` file is available, it will automatically install the listed Flatpak applications.
-5. **Install Software**:
+* **Enable RPM Fusion** – Enables free & non-free RPM Fusion repositories.
+* **Update Firmware** – Checks and installs firmware updates.
+* **Optimise DNF Speed** – Enables parallel downloads for faster package installs.
+* **Enable Flathub** – Adds the Flathub repository and installs Flatpak apps.
 
-- Installs packages listed in ```dnf-packages.txt```. Ensure this file exists and contains the software packages you wish to install.
-6. **Install Oh-My-Zsh & Starship Prompt**:
-- Installs the Zsh shell and Oh-My-Zsh framework, along with the Starship prompt for an enhanced shell experience.
-7. **Install Extras**:
+### **Software Installation**
 
-- This option installs multimedia codecs, themes, and fonts (including JetBrains Mono, Iosevka, and Google Noto fonts).
-- It also enables support for Microsoft TrueType fonts (msttcorefonts).
-8. **Install Nvidia Drivers**:
+* **Install Software Packages** – Installs packages listed in `assets/dnf-packages.txt`.
+* **Install Oh-My-ZSH** – Installs ZSH, Oh-My-ZSH, plugins, and Starship prompt.
+* **Install Extras (Fonts & Codecs)** – Installs extra fonts, media codecs, and icon themes (without switching themes).
 
-- This installs the akmod Nvidia driver if your system uses an Nvidia graphics card.
-9. **Customise**:
+### **Hardware Drivers**
 
-- This opens a sub-menu where you can perform several customization tasks related to your GNOME desktop such as:
-		
-	1. **Set Hostname**:
-	2. **Setup Custom Fonts**:
-	3. **Customise Clock**:
-	4. **Enable Window Buttons**: 
-	5. **Center Windows**:
-	6. **Disable Auto-Maximize**:
+* **Install Intel Media Driver** – VA-API driver for Intel GPUs.
+* **Install AMD Hardware Codecs** – VA-API and VDPAU drivers for AMD GPUs.
+* **Install NVIDIA Drivers** – Installs NVIDIA proprietary drivers via RPM Fusion.
 
-# Customisation Options Breakdown
-In the Customise menu, the following actions can be performed:
-- **Set Hostname**: Change your machine's hostname to a new value. This requires sudo permissions to apply.
+### **Customisation**
 
-- **Setup Custom Fonts**: Configure default fonts in GNOME, including system fonts, document fonts, monospace fonts, and titlebar fonts.
+* **Set Hostname** – Changes the system hostname.
+* **Setup Custom Fonts** – Configures GNOME interface and monospace fonts.
+* **Customise Clock** – Adjusts time format and date display in GNOME top bar.
+* **Enable Window Buttons** – Adds minimise and maximise buttons.
+* **Center New Windows** – Centers windows on open.
+* **Disable Auto-Maximise** – Prevents automatic window maximisation.
+* **Apply All Customisations** – Applies all above tweaks at once.
 
-- **Customize Clock**: Modify the appearance of the clock on your GNOME panel. You can set it to a 24-hour format, display the date, and hide or show seconds.
+---
 
-- **Enable Window Buttons**: Ensures your GNOME windows have minimize, maximize, and close buttons, making window management easier.
+## Screenshots
 
-- **Center Windows**: Forces new windows to open in the center of the screen rather than defaulting to random positions.
+*(Screenshots to be added)*
 
-- **Disable Auto-Maximize**: Prevents new windows from automatically maximizing, so they open at their default size instead.
+---
 
-***You can also edit any part of this to your own preference***
+## Contributing
 
-# Logging and Error Handling
-- **Logging**: The script keeps a log of all actions in a file called ```setup_log.txt```. You can refer to this file to track what the script has done or troubleshoot if something goes wrong.
+Pull requests are welcome! Please test changes before submitting.
 
-- **Error Handling**: 
-If the script encounters an error, it logs the error and notifies you via the terminal and GNOME notifications (if notify-send is available). Ensure to check the log file for more details.
+---
 
-# Notes and Tips
-- For custom installations, you can modify the ```dnf-packages.txt``` and ```flatpak-packages.txt``` files to suit your preferences before running the script.
-- If you encounter any issues, check the log file (setup_log.txt) for details about what might have gone wrong.
+## License
 
+This project is licensed under the MIT License
