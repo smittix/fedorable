@@ -1,7 +1,7 @@
 #!/bin/bash
 #
-# Fedorable v2.6 - Fedora Post Install Setup for GNOME
-# Always menu unless --install-all, hang-free extras, optimised
+# Fedorable v2.7 - Fedora Post Install Setup for GNOME
+# Always menu unless --install-all, hang-free extras, auto-installs dialog
 # By Smittix - https://smittix.net
 #
 
@@ -46,7 +46,7 @@ cleanup() { [[ -d /tmp/fedorable_tmp ]] && rm -rf /tmp/fedorable_tmp; }
 ########################################
 show_help() {
     cat <<EOF
-${BOLD}Fedorable v2.6 - Fedora Post Install Setup${RESET}
+${BOLD}Fedorable v2.7 - Fedora Post Install Setup${RESET}
 By Smittix - https://smittix.net
 
 Usage:
@@ -83,6 +83,12 @@ ACTUAL_HOME=$(getent passwd "$ACTUAL_USER" | cut -d: -f6)
 USER_ID=$(id -u "$ACTUAL_USER")
 export DBUS_SESSION_BUS_ADDRESS="unix:path=/run/user/$USER_ID/bus"
 mkdir -p /tmp/fedorable_tmp
+
+# Ensure dialog is installed
+if ! command -v dialog &>/dev/null; then
+    echo "Installing 'dialog' for menu support..."
+    dnf install -y dialog
+fi
 
 ########################################
 # Helpers
@@ -188,7 +194,7 @@ if [[ "$INSTALL_ALL" == true ]]; then
     notify "All tasks completed."
 else
     while true; do
-        CHOICE=$(dialog --clear --title "Fedorable v2.6" --menu "Choose an option:" 20 70 10 \
+        CHOICE=$(dialog --clear --title "Fedorable v2.7" --menu "Choose an option:" 20 70 10 \
             1 "System Setup" \
             2 "Software Installation" \
             3 "Hardware Drivers" \
